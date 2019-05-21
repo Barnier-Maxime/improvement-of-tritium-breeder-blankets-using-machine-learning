@@ -124,13 +124,11 @@ RUN wget https://update.code.visualstudio.com/1.31.1/linux-deb-x64/stable
 RUN dpkg -i stable 
 RUN apt-get --yes install -f
 
-RUN git clone https://github.com/Shimwell/openmc_workshop.git
-
-RUN git config --global user.email "mail@jshimwell.com"
-RUN git config --global user.name "shimwell"
+RUN git config --global user.email "maxime.barnier@grenoble-inp.org"
+RUN git config --global user.name "Barnier_Maxime"
 
 RUN git clone https://github.com/C-bowman/inference_tools.git
 RUN echo 'export PYTHONPATH=$PYTHONPATH:/inference_tools/inference' >> ~/.bashrc
 
 
-# WORKDIR /openmc_workshop
+# WORKDIR /machine_learning_project

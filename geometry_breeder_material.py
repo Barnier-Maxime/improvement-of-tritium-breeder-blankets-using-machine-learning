@@ -38,20 +38,27 @@ def make_breeder_material(enrichment_fraction, breeder_material_name, temperatur
 
     return breeder_material
 
-def make_materials_geometry_tallies(batches,enrichment_fraction,500,100,breeder_material_name,temperature_in_C): #thickness fixed to 100cm and inner radius to 500cm
-    print('simulating ',batches,enrichment_fraction,inner_radius,100,breeder_material_name)
+def make_materials_geometry_tallies(batches,enrichment_fractions,breeder_material_name,temperature_in_C): #thickness fixed to 100cm and inner radius to 500cm
+    print('simulating ',batches,enrichment_fraction,'inner radius = 500','thickness = 100',breeder_material_name)
+
+    number_of_materials=len(enrichment_fractions)
 
     #MATERIALS#
+    list_of_breeder_materials =[]
+    for e in enrichment_fractions:
+        breeder_material = make_breeder_material(e,breeder_material_name,temperature_in_C)
+        list_of_breeder_materials.append(breeder_material)
 
-    breeder_material = make_breeder_material(enrichment_fraction,breeder_material_name,temperature_in_C)
     eurofer = make_eurofer()
-    mats = openmc.Materials([breeder_material, eurofer])
+
+    mats = openmc.Materials(list_of_breeder_materials+[eurofer])
 
 
     #GEOMETRY#
-
+    
+    for k in range (1,number_of_materials+1):
     breeder_blanket_inner_surface = openmc.Sphere(R=500) #inner radius
-    breeder_blanket_outer_surface = openmc.Sphere(R=500+100) #inner radius + thickness
+    breeder_blanket_outer_surface = openmc.Sphere(R=500+k*33) #inner radius + thickness
 
     vessel_inner_surface = openmc.Sphere(R=500+100+10) #inner radius + thickness + 10
     vessel_outer_surface = openmc.Sphere(R=500+100+20,boundary_type='vacuum') #inner radius + thickness + 20
@@ -102,42 +109,16 @@ def make_materials_geometry_tallies(batches,enrichment_fraction,500,100,breeder_
 
     # define filters
     cell_filter_breeder = openmc.CellFilter(breeder_blanket_cell)
-    cell_filter_vessel = openmc.CellFilter(vessel_cell)
+
     particle_filter = openmc.ParticleFilter([1]) #1 is neutron, 2 is photon
-    surface_filter_rear_blanket = openmc.SurfaceFilter(breeder_blanket_outer_surface)
-    surface_filter_rear_vessel = openmc.SurfaceFilter(vessel_outer_surface)
-    energy_bins = openmc.mgxs.GROUP_STRUCTURES['VITAMIN-J-175']
-    energy_filter = openmc.EnergyFilter(energy_bins)
+
     
     tally = openmc.Tally(name='TBR')
     tally.filters = [cell_filter_breeder, particle_filter]
     tally.scores = ['205']
     tallies.append(tally)
 
-    tally = openmc.Tally(name='blanket_leakage')
-    tally.filters = [surface_filter_rear_blanket, particle_filter]
-    tally.scores = ['current']
-    tallies.append(tally)
 
-    tally = openmc.Tally(name='vessel_leakage')
-    tally.filters = [surface_filter_rear_vessel, particle_filter]
-    tally.scores = ['current']
-    tallies.append(tally)
-
-    tally = openmc.Tally(name='breeder_blanket_spectra')
-    tally.filters = [cell_filter_breeder, particle_filter, energy_filter]
-    tally.scores = ['flux']
-    tallies.append(tally)
-
-    tally = openmc.Tally(name='vacuum_vessel_spectra')
-    tally.filters = [cell_filter_vessel, particle_filter, energy_filter]
-    tally.scores = ['flux']
-    tallies.append(tally)
-
-    tally = openmc.Tally(name='DPA')
-    tally.filters = [cell_filter_vessel, particle_filter]
-    tally.scores = ['444']
-    tallies.append(tally)
  
 
     #RUN OPENMC #
@@ -178,18 +159,21 @@ def make_materials_geometry_tallies(batches,enrichment_fraction,500,100,breeder_
     return json_output
    
 results = []
-num_simulations=5
+num_simulations=10
+number_of_materials = 3
 
 for i in tqdm(range(0,num_simulations)):
-        breeder_material_name = random.choice(['Li4SiO4', 'F2Li2BeF2', 'Li', 'Pb84.2Li15.8'])
-        enrichment_fraction = random.uniform(0, 1)
+        breeder_material_name = 'Li'
+
+        for j in range(0,number_of_materials):
+            enrichment_fraction = random.uniform(0, 1)
+            enrichment_fractions.append(enrichment_fraction)
+
         inner_radius = 500
         thickness = 100
 
         result = make_materials_geometry_tallies(batches=4,
-                                                enrichment_fraction=enrichment_fraction,
-                                                inner_radius=inner_radius,
-                                                thickness=thickness,
+                                                enrichment_fraction=enrichment_fractions,
                                                 breeder_material_name = breeder_material_name, 
                                                 temperature_in_C=500
                                                 )

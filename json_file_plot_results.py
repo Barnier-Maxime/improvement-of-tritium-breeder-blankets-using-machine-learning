@@ -26,9 +26,9 @@ results_df = json_normalize(data=results)
 
 for tally_name in ['TBR']: #other tallies such as DPA or leakage can be added here
       
-      text_values = {}
+        text_values = {}
 
-      for material_name in all_materials:
+        for material_name in all_materials:
 
             df_filtered_by_mat = results_df[results_df['breeder_material_name']==material_name]
             
@@ -42,31 +42,31 @@ for tally_name in ['TBR']: #other tallies such as DPA or leakage can be added he
                                     )
                 
             text_values[material_name] = text_value
-    traces={}
-    x_axis_name='thickness'
-    traces[x_axis_name]=[]
-    for material_name in all_materials:
+        traces = {}
+        x_axis_name='thickness'
+        traces[x_axis_name]=[]
+        for material_name in all_materials:
 
-                  df_filtered_by_mat = results_df[results_df['breeder_material_name']==material_name]
+                    df_filtered_by_mat = results_df[results_df['breeder_material_name']==material_name]
 
-                  tally = df_filtered_by_mat[tally_name+'.value']
-                  tally_std_dev = df_filtered_by_mat[tally_name+'.std_dev']
+                    tally = df_filtered_by_mat[tally_name+'.value']
+                    tally_std_dev = df_filtered_by_mat[tally_name+'.std_dev']
 
-                  traces[x_axis_name].append(Scatter(x=df_filtered_by_mat[x_axis_name], 
-                                          y= tally,
-                                          mode = 'markers',
-                                          hoverinfo='text' ,
-                                          text=text_values[material_name],                       
-                                          name = material_name,                
-                                          error_y= {'array':tally_std_dev},
-                                          )
-                                    )
-    layout_ef = {'title':tally_name+' and '+x_axis_name,
-                        'hovermode':'closest',
-                  'xaxis':{'title':x_axis_name},
-                  'yaxis':{'title':tally_name},
-                  }
-            plot({'data':traces[x_axis_name],
-                  'layout':layout_ef},
-                  filename=tally_name+'_vs_'+x_axis_name+'.html'
-                  )
+                    traces[x_axis_name].append(Scatter(x=df_filtered_by_mat[x_axis_name], 
+                                            y= tally,
+                                            mode = 'markers',
+                                            hoverinfo='text' ,
+                                            text=text_values[material_name],                       
+                                            name = material_name,                
+                                            error_y= {'array':tally_std_dev},
+                                            )
+                                        )
+        layout_ef = {'title':tally_name+' and '+x_axis_name,
+                            'hovermode':'closest',
+                    'xaxis':{'title':x_axis_name},
+                    'yaxis':{'title':tally_name},
+                    }
+plot({'data':traces[x_axis_name],
+    'layout':layout_ef},
+    filename=tally_name+'_vs_'+x_axis_name+'.html'
+    )

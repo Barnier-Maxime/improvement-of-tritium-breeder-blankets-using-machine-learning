@@ -44,7 +44,9 @@ def make_materials_geometry_tallies(batches,enrichment_fractions,breeder_materia
     number_of_materials=len(enrichment_fractions)
 
     #MATERIALS#
+
     list_of_breeder_materials =[]
+
     for e in enrichment_fractions:
         breeder_material = make_breeder_material(e,breeder_material_name,temperature_in_C)
         list_of_breeder_materials.append(breeder_material)
@@ -55,20 +57,30 @@ def make_materials_geometry_tallies(batches,enrichment_fractions,breeder_materia
 
 
     #GEOMETRY#
-    
-    for k in range (1,number_of_materials+1):
+
     breeder_blanket_inner_surface = openmc.Sphere(R=500) #inner radius
-    breeder_blanket_outer_surface = openmc.Sphere(R=500+k*33) #inner radius + thickness
+    list_of_breeder_blanket_region = []
+    list_of_breeder_blanket_cell = []
+    
+
+    for k in range (1,number_of_materials+1):
+        breeder_blanket_outer_surface = openmc.Sphere(R=500+k*(100/number_of_materials)) #inner radius + thickness of each breeder material
+        list_of_breeder_blanket_region.append (-breeder_blanket_outer_surface & +breeder_blanket_inner_surface)
+        list_of_breeder_blanket_cell.append (openmc.Cell(region=-breeder_blanket_outer_surface & +breeder_blanket_inner_surface))
+        openmc.Cell(region=-breeder_blanket_outer_surface & +breeder_blanket_inner_surface).fill = list_of_breeder_materials[k-1]
+        openmc.Cell(region=-breeder_blanket_outer_surface & +breeder_blanket_inner_surface).name = 'breeder_blanket' 
+        breeder_blanket_inner_surface = breeder_blanket_outer_surface
+   
 
     vessel_inner_surface = openmc.Sphere(R=500+100+10) #inner radius + thickness + 10
     vessel_outer_surface = openmc.Sphere(R=500+100+20,boundary_type='vacuum') #inner radius + thickness + 20
 
-    breeder_blanket_region = -breeder_blanket_outer_surface & +breeder_blanket_inner_surface
-    breeder_blanket_cell = openmc.Cell(region=breeder_blanket_region) 
-    breeder_blanket_cell.fill = breeder_material
-    breeder_blanket_cell.name = 'breeder_blanket'
+    #breeder_blanket_region = -breeder_blanket_outer_surface & +breeder_blanket_inner_surface
+    #breeder_blanket_cell = openmc.Cell(region=breeder_blanket_region) 
+    #breeder_blanket_cell.fill = breeder_material
+    #breeder_blanket_cell.name = 'breeder_blanket'
 
-    inner_void_region = -breeder_blanket_inner_surface 
+    inner_void_region = -openmc.Sphere(R=500) #inner radius
     inner_void_cell = openmc.Cell(region=inner_void_region) 
     inner_void_cell.name = 'inner_void'
 
@@ -77,12 +89,12 @@ def make_materials_geometry_tallies(batches,enrichment_fractions,breeder_materia
     vessel_cell.name = 'vessel'
     vessel_cell.fill = eurofer
 
-    blanket_vessel_gap_region = -vessel_inner_surface & + breeder_blanket_outer_surface
+    blanket_vessel_gap_region = -vessel_inner_surface & +openmc.Sphere(R=500+100)
     blanket_vessel_gap_cell = openmc.Cell(region=blanket_vessel_gap_region) 
     blanket_vessel_gap_cell.name = 'blanket_vessel_gap'    
 
     universe = openmc.Universe(cells=[inner_void_cell, 
-                                      breeder_blanket_cell,
+                                      list_of_breeder_blanket_cell,
                                       blanket_vessel_gap_cell,
                                       vessel_cell])
 
@@ -108,26 +120,38 @@ def make_materials_geometry_tallies(batches,enrichment_fractions,breeder_materia
     tallies = openmc.Tallies()
 
     # define filters
-    cell_filter_breeder = openmc.CellFilter(breeder_blanket_cell)
+    list_of_cell_filter_breeder = []
+    list_of_particle_filter = []
 
-    particle_filter = openmc.ParticleFilter([1]) #1 is neutron, 2 is photon
+    #cell_filter_breeder = openmc.CellFilter(breeder_blanket_cell)
+
+    for l in range (number_of_materials):
+        list_of_cell_filter_breeder.append(openmc.CellFilter(list_of_breeder_blanket_cell[l]))
+        list_of_particle_filter.append(openmc.ParticleFilter([1])) #1 is neutron, 2 is photon
+
+    #particle_filter = openmc.ParticleFilter([1]) #1 is neutron, 2 is photon
 
     
-    tally = openmc.Tally(name='TBR')
-    tally.filters = [cell_filter_breeder, particle_filter]
-    tally.scores = ['205']
-    tallies.append(tally)
+    #tally = openmc.Tally(name='TBR')
+    #tally.filters = [cell_filter_breeder, particle_filter]
+    #tally.scores = ['205']
+    #tallies.append(tally)
 
+    for u in range (number_of_materials):
+        tally = openmc.Tally(name='TBR')
+        tally.filters = [list_of_cell_filter_breeder[u],list_of_particle_filter[u] ]
+        tally.scores = ['205']
+        tallies.append(tally)  
 
- 
 
     #RUN OPENMC #
+
     model = openmc.model.Model(geom, mats, sett, tallies)
     model.run()
 
     sp = openmc.StatePoint('statepoint.'+str(batches)+'.h5')
 
-    json_output = {'enrichment_fraction': enrichment_fraction,
+    json_output = {'enrichment_fraction': enrichment_fractions,
                    'inner_radius': 500,
                    'thickness': 100,
                    'breeder_material_name': breeder_material_name,
@@ -166,7 +190,7 @@ for i in tqdm(range(0,num_simulations)):
         breeder_material_name = 'Li'
 
         for j in range(0,number_of_materials):
-            enrichment_fraction = random.uniform(0, 1)
+            enrichment_fraction = (j+1)*1/number_of_materials
             enrichment_fractions.append(enrichment_fraction)
 
         inner_radius = 500

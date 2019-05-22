@@ -20,7 +20,7 @@ with open('simulation_results.json') as f:
 
 results_df = json_normalize(data=results)
 
-all_materials = ['F2Li2BeF2','Li','Pb84.2Li15.8','Li4SiO4']
+all_materials = ['Li']
 
 results_df = json_normalize(data=results)
 

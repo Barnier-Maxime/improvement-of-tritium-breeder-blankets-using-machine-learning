@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='utf-8'?>
+<geometry>
+  <cell id="113" material="void" name="inner_void" region="-113" universe="29" />
+  <cell id="114" material="1" name="breeder_blanket" region="-114 113" universe="29" />
+  <cell id="115" material="2" name="breeder_blanket" region="-115 114" universe="29" />
+  <cell id="116" material="3" name="breeder_blanket" region="-116 115" universe="29" />
+  <surface coeffs="0.0 0.0 0.0 500" id="113" type="sphere" />
+  <surface coeffs="0.0 0.0 0.0 533.3333333333334" id="114" type="sphere" />
+  <surface coeffs="0.0 0.0 0.0 566.6666666666666" id="115" type="sphere" />
+  <surface boundary="vacuum" coeffs="0.0 0.0 0.0 600" id="116" type="sphere" />
+</geometry>

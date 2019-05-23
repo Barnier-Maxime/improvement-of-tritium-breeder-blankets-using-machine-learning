@@ -1,4 +1,4 @@
-import openmc
+cod import openmc
 import os
 import json
 import numpy as np

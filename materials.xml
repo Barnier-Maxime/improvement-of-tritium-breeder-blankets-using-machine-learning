@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='utf-8'?>
+<materials>
+  <material id="1" name="Li">
+    <density units="atom/b-cm" value="0.04205925171214394" />
+    <nuclide ao="0.5610624248655166" name="Li6" />
+    <nuclide ao="0.4389375751344834" name="Li7" />
+  </material>
+  <material id="2" name="Li">
+    <density units="atom/b-cm" value="0.04205925171214394" />
+    <nuclide ao="0.8018341932182427" name="Li6" />
+    <nuclide ao="0.19816580678175733" name="Li7" />
+  </material>
+  <material id="3" name="Li">
+    <density units="atom/b-cm" value="0.04205925171214394" />
+    <nuclide ao="0.5882322580203404" name="Li6" />
+    <nuclide ao="0.4117677419796596" name="Li7" />
+  </material>
+</materials>

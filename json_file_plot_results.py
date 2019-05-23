@@ -2,13 +2,11 @@ import openmc
 import os
 import json
 import numpy as np
-from numpy import random
-import re 
-from tqdm import tqdm
-
+import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
 from material_maker_functions import *
-
 from plotly.offline import download_plotlyjs, plot
+import plotly.graph_objs as go
 from plotly.graph_objs import Scatter3d, Layout, Scatter
 import pandas as pd
 from pandas.io.json import json_normalize
@@ -17,13 +15,57 @@ with open('simulation_results_old.json') as f:
     results = json.load(f)
 
 # PLOTS RESULTS #
+x_axis = []
+y_axis = []
+z_axis = []
+TBR = []
+#print(results)
+for k in range(len(results)): # creation of the 3 axis
+    x_axis.append(results[k]['enrichment_value'][0])
+    y_axis.append(results[k]['enrichment_value'][1])
+    z_axis.append(results[k]['enrichment_value'][2])
+    TBR.append(results[k]['value'])
 
-print(results[0]['enrichment_value'][0])
-print(results[0]['enrichment_value'][1])
-print(results[0]['enrichment_value'][2])
-print(results[0]['value'])
+results_df = json_normalize(data=results)
 
-# results_df = json_normalize(data=results)
+#fig = plt.figure()
+
+#ax = fig.add_subplot(111, projection='3d')
+#pnt3d=ax.scatter(x_axis,y_axis,z_axis,c=TBR)
+#cbar=plt.colorbar(pnt3d)
+#cbar.set_label("TBR value")
+#ax.set_xlabel('enrichment first layer')
+#ax.set_ylabel('enrichment second layer')
+#ax.set_zlabel('enrichment third layer')
+
+#plt.show()
+
+trace1 = go.Scatter3d(
+    x=x_axis,
+    y=y_axis,
+    z=z_axis,
+    mode='markers',
+    marker=dict(
+        size=5,
+        color=TBR,                # set color to an array/list of desired values
+        colorscale='Viridis',   # choose a colorscale
+        opacity=0.8
+    )
+)
+
+data = [trace1]
+layout = go.Layout(
+    margin=dict(
+        l=0,
+        r=0,
+        b=0,
+        t=0
+    )
+)
+fig = go.Figure(data=data, layout=layout)
+plot(fig,show_link=False)
+
+
 
 
 # traces = {}

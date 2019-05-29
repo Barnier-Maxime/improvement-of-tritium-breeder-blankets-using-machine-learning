@@ -11,7 +11,7 @@ from plotly.graph_objs import Scatter3d, Layout, Scatter
 import pandas as pd
 from pandas.io.json import json_normalize
 
-with open('simulation_results.json') as f:
+with open('simulation_results_3_layers_non_uni.json') as f:
     results = json.load(f)
 
 # PLOTS RESULTS #
@@ -19,12 +19,18 @@ x_axis = []
 y_axis = []
 z_axis = []
 TBR = []
+text_list =[]
 #print(results)
-for k in range(len(results)): # creation of the 3 axis
-    x_axis.append(results[k]['enrichment_value'][0])
-    y_axis.append(results[k]['enrichment_value'][1])
-    z_axis.append(results[k]['enrichment_value'][2])
-    TBR.append(results[k]['value'])
+for k in results: # creation of the 3 axis
+    x_axis.append(k['enrichment_value'][0])
+    y_axis.append(k['enrichment_value'][1])
+    z_axis.append(k['enrichment_value'][2])
+    TBR.append(k['value'])
+    text_list.append('TBR=' +str(k['value'])+'<br>'
+                    +'Enrichment first layer=' +str(k['enrichment_value'][0])+'<br>'
+                    +'Enrichment second layer=' +str(k['enrichment_value'][1])+'<br>'
+                    +'Enrichment third layer=' +str(k['enrichment_value'][2])
+                    )
 
 results_df = json_normalize(data=results)
 
@@ -32,6 +38,8 @@ trace1 = go.Scatter3d(
     x=x_axis,
     y=y_axis,
     z=z_axis,
+    hoverinfo='text',
+    text=text_list,
     mode='markers',
     marker=dict(
         size=2,
@@ -42,6 +50,18 @@ trace1 = go.Scatter3d(
 )
 
 data = [trace1]
-layout = go.Layout(title='TBR as a function of enrichment fractions in Li6')
+layout = go.Layout(title='TBR as a function of enrichment fractions in Li6',
+                   scene=dict(
+                                xaxis=dict(
+                                         title='Enrichment first layer'
+                                         ),
+                                yaxis=dict(
+                                        title='Enrichment second layer'
+                                ),
+                                zaxis=dict(
+                                        title='Enrichment third layer'
+                                )
+                            )
+                    )
 fig = go.Figure(data=data, layout=layout)
 plot(fig,show_link=True,image='png')

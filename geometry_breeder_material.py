@@ -145,27 +145,27 @@ def make_materials_geometry_tallies(batches,enrichment_fractions,breeder_materia
     return json_output
    
 results = []
-num_simulations=20000
-number_of_materials = 3
-num_uniform_simulations=100
+num_simulations=1000
+number_of_materials = 5
+num_uniform_simulations=1000
 
 
-for i in tqdm(range(0,num_uniform_simulations+1)):
-        enrichment_fractions_simulation = []
-        breeder_material_name = 'Li'
+# for i in tqdm(range(0,num_uniform_simulations+1)):
+#         enrichment_fractions_simulation = []
+#         breeder_material_name = 'Li'
         
-        for j in range(0,number_of_materials):
-            enrichment_fractions_simulation.append((1.0/num_uniform_simulations)*i)
+#         for j in range(0,number_of_materials):
+#             enrichment_fractions_simulation.append((1.0/num_uniform_simulations)*i)
 
-        inner_radius = 500
-        thickness = 100
+#         inner_radius = 500
+#         thickness = 100
 
-        result = make_materials_geometry_tallies(batches=4,
-                                                enrichment_fractions=enrichment_fractions_simulation,
-                                                breeder_material_name = breeder_material_name, 
-                                                temperature_in_C=500
-                                                )
-        results.append(result)
+#         result = make_materials_geometry_tallies(batches=4,
+#                                                 enrichment_fractions=enrichment_fractions_simulation,
+#                                                 breeder_material_name = breeder_material_name, 
+#                                                 temperature_in_C=500
+#                                                 )
+#         results.append(result)
 
 
 
@@ -188,5 +188,5 @@ for i in tqdm(range(0,num_simulations)):
         results.append(result)
 
 
-with open('simulation_results.json', 'w') as file_object:
+with open('simulation_results_5_layers_non_uni.json', 'w') as file_object:
     json.dump(results, file_object, indent=2)

@@ -1,34 +1,118 @@
-import openmc
-import os
+
 import json
-import numpy as np
-import matplotlib.pyplot as plt
-from mpl_toolkits.mplot3d import Axes3D
-from material_maker_functions import *
-from plotly.offline import download_plotlyjs, plot
-import plotly.graph_objs as go
-from plotly.graph_objs import Scatter3d, Layout, Scatter
 import pandas as pd
 from pandas.io.json import json_normalize
+import matplotlib.pyplot as plt
+from plotly.offline import download_plotlyjs, plot
+from plotly.graph_objs import Scatter, Layout
 
-with open('simulation_results_old.json') as f:
-    results = json.load(f)
+# normalized_df = json_normalize(df['enrichment_value'])
 
-#print(results[0]['value'])
-values=[]
-for k in range(len(results)):
-    values.append(results[k]['value'])
-max_TBR=max(values)
-print(max_TBR)
+x=[]
+y_non_uniform=[]
+y_uniform=[]
 
-indice=0
+# 1 LAYER
+df = pd.read_json('simulation_results_1_layer_non_uni.json') #check
 
-for j in range(len(results)):
-    if results[j]['value']==max_TBR:
-        indice+=j
-    else:
-        indice=indice
+row_with_max_tbr = df.loc[df['value'].idxmax()] 
+max_tbr = row_with_max_tbr['value']
+enrichment_at_max_tbr = row_with_max_tbr['enrichment_value']
+print(row_with_max_tbr)
+x.append(1)
+y_non_uniform.append(max_tbr)
+y_uniform.append(max_tbr) #max TBR are calculated for 1000 simulations
 
-optimum_enrichment=results[j]['enrichment_value']
-print(optimum_enrichment)
+#df['enrichment_value.1']
+
+
+#2 LAYERS
+df = pd.read_json('simulation_results_2_layers_non_uni.json') #check
+
+row_with_max_tbr = df.loc[df['value'].idxmax()] 
+max_tbr = row_with_max_tbr['value']
+enrichment_at_max_tbr = row_with_max_tbr['enrichment_value']
+print(row_with_max_tbr)
+x.append(2)
+y_non_uniform.append(max_tbr)
+
+df = pd.read_json('simulation_results_2_layers_uni.json') #check
+
+row_with_max_tbr = df.loc[df['value'].idxmax()] 
+max_tbr = row_with_max_tbr['value']
+enrichment_at_max_tbr = row_with_max_tbr['enrichment_value']
+print(row_with_max_tbr)
+y_uniform.append(max_tbr)
+
+#3 LAYERS
+df = pd.read_json('simulation_results_3_layers_non_uni.json') #check
+
+row_with_max_tbr = df.loc[df['value'].idxmax()] 
+max_tbr = row_with_max_tbr['value']
+enrichment_at_max_tbr = row_with_max_tbr['enrichment_value']
+print(row_with_max_tbr)
+x.append(3)
+y_non_uniform.append(max_tbr)
+
+df = pd.read_json('simulation_results_3_layer_uni.json') #check
+
+row_with_max_tbr = df.loc[df['value'].idxmax()] 
+max_tbr = row_with_max_tbr['value']
+enrichment_at_max_tbr = row_with_max_tbr['enrichment_value']
+print(row_with_max_tbr)
+y_uniform.append(max_tbr)
+
+#4 LAYERS
+df = pd.read_json('simulation_results_4_layers_non_uni.json') #check
+
+row_with_max_tbr = df.loc[df['value'].idxmax()] 
+max_tbr = row_with_max_tbr['value']
+enrichment_at_max_tbr = row_with_max_tbr['enrichment_value']
+print(row_with_max_tbr)
+x.append(4)
+y_non_uniform.append(max_tbr)
+
+df = pd.read_json('simulation_results_4_layers_uni.json') #check
+
+row_with_max_tbr = df.loc[df['value'].idxmax()] 
+max_tbr = row_with_max_tbr['value']
+enrichment_at_max_tbr = row_with_max_tbr['enrichment_value']
+print(row_with_max_tbr)
+y_uniform.append(max_tbr)
+
+#5 LAYERS
+df = pd.read_json('simulation_results_5_layers_non_uni.json') #check
+
+row_with_max_tbr = df.loc[df['value'].idxmax()] 
+max_tbr = row_with_max_tbr['value']
+enrichment_at_max_tbr = row_with_max_tbr['enrichment_value']
+print(row_with_max_tbr)
+x.append(5)
+y_non_uniform.append(max_tbr)
+
+df = pd.read_json('simulation_results_5_layers_uni.json') #check
+
+row_with_max_tbr = df.loc[df['value'].idxmax()] 
+max_tbr = row_with_max_tbr['value']
+enrichment_at_max_tbr = row_with_max_tbr['enrichment_value']
+print(row_with_max_tbr)
+y_uniform.append(max_tbr)
+
+# PLOTS RESULTS #
+non_uniform_enrichment= Scatter(x=x, 
+                y=y_non_uniform,
+                mode = 'lines',
+                )
+uniform_enrichment= Scatter(x=x, 
+                y=y_uniform,
+                mode = 'lines',
+                )               
+
+layout = {'title':'Max TBR with uniform and non uniform enrichment fraction as a function of the number of layer',
+          'xaxis':{'title':'Number of layer'},
+          'yaxis':{'title':'Max TBR'},
+         }
+plot({'data':[non_uniform_enrichment,uniform_enrichment],
+      'layout':layout},
+      filename='max_tbr_study.html')
 

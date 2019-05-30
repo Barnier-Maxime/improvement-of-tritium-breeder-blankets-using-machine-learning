@@ -51,7 +51,7 @@ def make_materials_geometry_tallies(batches,enrichment_fractions,breeder_materia
     list_of_breeder_materials =[]
 
     for counter, e in enumerate(enrichment_fractions):
-        breeder_material = make_breeder_material(e,breeder_material_name,temperature_in_C,counter+1)
+        breeder_material = make_breeder_material(e,breeder_material_name,temperature_in_C,counter+3)
         list_of_breeder_materials.append(breeder_material)
 
     print('len(list_of_breeder_materials)',len(list_of_breeder_materials))
@@ -60,7 +60,7 @@ def make_materials_geometry_tallies(batches,enrichment_fractions,breeder_materia
 
     # #GEOMETRY#
 
-    breeder_blanket_inner_surface = openmc.Sphere(R=500) #inner radius
+    breeder_blanket_inner_surface = openmc.Sphere(r=500) #inner radius
     inner_void_region = -breeder_blanket_inner_surface #inner radius
     inner_void_cell = openmc.Cell(region=inner_void_region) 
     inner_void_cell.name = 'inner_void'
@@ -73,9 +73,9 @@ def make_materials_geometry_tallies(batches,enrichment_fractions,breeder_materia
     for k in range(1,number_of_materials+1):
 
         if k==number_of_materials:
-            breeder_blanket_outer_surface= openmc.Sphere(R=500+100,boundary_type='vacuum')
+            breeder_blanket_outer_surface= openmc.Sphere(r=500+100,boundary_type='vacuum')
         else:
-            breeder_blanket_outer_surface = openmc.Sphere(R=500+k*(100/number_of_materials)) #inner radius + thickness of each breeder material
+            breeder_blanket_outer_surface = openmc.Sphere(r=500+k*(100/number_of_materials)) #inner radius + thickness of each breeder material
         
         list_of_breeder_blanket_region.append(-breeder_blanket_outer_surface & +breeder_blanket_inner_surface)
 
@@ -85,7 +85,8 @@ def make_materials_geometry_tallies(batches,enrichment_fractions,breeder_materia
 
         list_of_breeder_blanket_cell.append(breeder_cell)
 
-        breeder_blanket_inner_surface = breeder_blanket_outer_surface
+        if k!=number_of_materials:
+            breeder_blanket_inner_surface = breeder_blanket_outer_surface
    
  
     cells = [inner_void_cell] + list_of_breeder_blanket_cell
@@ -93,6 +94,9 @@ def make_materials_geometry_tallies(batches,enrichment_fractions,breeder_materia
     universe = openmc.Universe(cells = cells)                              
 
     geom = openmc.Geometry(universe)
+
+    #openmc color by material
+
     #plt.show(universe.plot(width=(2000,2000),basis='xz',colors={inner_void_cell: 'blue',list_of_breeder_blanket_cell[0] : 'yellow',list_of_breeder_blanket_cell[1] : 'green', list_of_breeder_blanket_cell[2]: 'red'}))
     geom.export_to_xml()
 
@@ -100,7 +104,6 @@ def make_materials_geometry_tallies(batches,enrichment_fractions,breeder_materia
     #SIMULATION SETTINGS#
 
     sett = openmc.Settings()
-    #batches = 3 # this is parsed as an argument
     sett.batches = batches
     sett.inactive = 0
     sett.particles = 5000
@@ -115,7 +118,6 @@ def make_materials_geometry_tallies(batches,enrichment_fractions,breeder_materia
     #TALLIES#
 
     tallies = openmc.Tallies()
-
     cell_filter_breeder = openmc.CellFilter(list_of_breeder_blanket_cell)
 
     tally = openmc.Tally(name='TBR')  
@@ -132,25 +134,30 @@ def make_materials_geometry_tallies(batches,enrichment_fractions,breeder_materia
     sp = openmc.StatePoint('statepoint.'+str(batches)+'.h5')
 
     tally = sp.get_tally(name='TBR')
-    # for some reason the tally sum is a nested list
-    tally_result = tally.sum[0][0][0]/batches
-    # for some reason the tally std_dev is a nested list
-    tally_std_dev = tally.std_dev[0][0][0]/batches
+
+
+    tally_result = tally.get_values().sum() 
+
+    # df =tally.get_pandas_dataframe()  
+    # tally_result = df['mean'].sum() 
 
     json_output= {'enrichment_value':enrichment_fractions,
                             'value': tally_result,
-                                'std_dev': tally_std_dev}
+                                # 'std_dev': tally_std_dev
+                                }
 
     print(json_output)
     return json_output
    
-results = []
-num_simulations=1000
-number_of_materials = 5
-num_uniform_simulations=1000
+os.system('rm *.h5')
 
+num_simulations=20000
+number_of_materials = 3
+num_uniform_simulations=100
 
+# results_uniform = []
 # for i in tqdm(range(0,num_uniform_simulations+1)):
+#         os.system('rm *.h5')
 #         enrichment_fractions_simulation = []
 #         breeder_material_name = 'Li'
         
@@ -165,12 +172,17 @@ num_uniform_simulations=1000
 #                                                 breeder_material_name = breeder_material_name, 
 #                                                 temperature_in_C=500
 #                                                 )
-#         results.append(result)
+#         results_uniform.append(result)
+
+
+# with open('simulation_results_'+str(number_of_materials)+'_layers_uni_100.json', 'w') as file_object:
+#     json.dump(results_uniform, file_object, indent=2)
 
 
 
-
+results = []
 for i in tqdm(range(0,num_simulations)):
+        os.system('rm *.h5')
         enrichment_fractions_simulation = []
         breeder_material_name = 'Li'
         
@@ -188,5 +200,5 @@ for i in tqdm(range(0,num_simulations)):
         results.append(result)
 
 
-with open('simulation_results_5_layers_non_uni.json', 'w') as file_object:
+with open('simulation_results_'+str(number_of_materials)+'_layers_non_uni_20000.json', 'w') as file_object:
     json.dump(results, file_object, indent=2)

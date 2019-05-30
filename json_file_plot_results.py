@@ -11,7 +11,8 @@ from plotly.graph_objs import Scatter3d, Layout, Scatter
 import pandas as pd
 from pandas.io.json import json_normalize
 
-with open('simulation_results_3_layers_non_uni.json') as f:
+#################### ONLY WORKS FOR 3 LAYERS ########################
+with open('simulation_results_'+str(3)+'_layers_uni_100.json') as f:
     results = json.load(f)
 
 # PLOTS RESULTS #

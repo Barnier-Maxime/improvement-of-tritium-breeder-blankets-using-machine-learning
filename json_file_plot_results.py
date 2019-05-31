@@ -12,7 +12,7 @@ import pandas as pd
 from pandas.io.json import json_normalize
 
 #################### ONLY WORKS FOR 3 LAYERS ########################
-with open('simulation_results_'+str(3)+'_layers_uni_100.json') as f:
+with open('simulation_results_'+str(3)+'_layers_non_uni_20000.json') as f:
     results = json.load(f)
 
 # PLOTS RESULTS #

@@ -6,7 +6,7 @@ from numpy import random
 import re 
 from tqdm import tqdm
 import matplotlib.pyplot as plt
-
+from uncertainties import unumpy
 from material_maker_functions import *
 
 def make_breeder_material(enrichment_fraction, breeder_material_name, temperature_in_C,id): #give the chemical expression for the name
@@ -98,8 +98,22 @@ def make_materials_geometry_tallies(batches,enrichment_fractions,breeder_materia
     #openmc color by material
 
     #plt.show(universe.plot(width=(2000,2000),basis='xz',colors={inner_void_cell: 'blue',list_of_breeder_blanket_cell[0] : 'yellow',list_of_breeder_blanket_cell[1] : 'green', list_of_breeder_blanket_cell[2]: 'red'}))
-    geom.export_to_xml()
+    # geom.export_to_xml()
+    # p = openmc.Plot()
+    # p.basis='xz'
+    # p.filename = 'plot'
+    # p.width = (1850, 1850) #hint, this might need to be increased to see the new large geometry
+    # p.pixels = (1400, 1400) 
+    # p.color_by = 'material'
+    # #p.colors = {natural_lead: 'blue'}
+    # plots = openmc.Plots([p])
+    # plots.export_to_xml()
 
+    # openmc.plot_geometry()
+
+    # os.system('convert plot.ppm plot.png')
+    # os.system('eog plot.png')
+    # os.system('xdg-open plot.png')
 
     #SIMULATION SETTINGS#
 
@@ -138,12 +152,15 @@ def make_materials_geometry_tallies(batches,enrichment_fractions,breeder_materia
 
     tally_result = tally.get_values().sum() 
 
-    # df =tally.get_pandas_dataframe()  
-    # tally_result = df['mean'].sum() 
+    var=0
+    df =tally.get_pandas_dataframe()     
+    for sigma in df['std. dev.']:
+        var+=sigma**2 #independance which is considered between the different layers
+    tally_std_dev=(var)**(1/2)
 
     json_output= {'enrichment_value':enrichment_fractions,
                             'value': tally_result,
-                                # 'std_dev': tally_std_dev
+                                 'std_dev': tally_std_dev
                                 }
 
     print(json_output)
@@ -151,33 +168,32 @@ def make_materials_geometry_tallies(batches,enrichment_fractions,breeder_materia
    
 os.system('rm *.h5')
 
-num_simulations=20000
+num_simulations=100
 number_of_materials = 3
 num_uniform_simulations=100
 
-# results_uniform = []
-# for i in tqdm(range(0,num_uniform_simulations+1)):
-#         os.system('rm *.h5')
-#         enrichment_fractions_simulation = []
-#         breeder_material_name = 'Li'
+results_uniform = []
+for i in tqdm(range(0,num_uniform_simulations+1)):
+        os.system('rm *.h5')
+        enrichment_fractions_simulation = []
+        breeder_material_name = 'Li'
         
-#         for j in range(0,number_of_materials):
-#             enrichment_fractions_simulation.append((1.0/num_uniform_simulations)*i)
+        for j in range(0,number_of_materials):
+            enrichment_fractions_simulation.append((1.0/num_uniform_simulations)*i)
 
-#         inner_radius = 500
-#         thickness = 100
+        inner_radius = 500
+        thickness = 100
 
-#         result = make_materials_geometry_tallies(batches=4,
-#                                                 enrichment_fractions=enrichment_fractions_simulation,
-#                                                 breeder_material_name = breeder_material_name, 
-#                                                 temperature_in_C=500
-#                                                 )
-#         results_uniform.append(result)
+        result = make_materials_geometry_tallies(batches=4,
+                                                enrichment_fractions=enrichment_fractions_simulation,
+                                                breeder_material_name = breeder_material_name, 
+                                                temperature_in_C=500
+                                                )
+        results_uniform.append(result)
 
 
-# with open('simulation_results_'+str(number_of_materials)+'_layers_uni_100.json', 'w') as file_object:
-#     json.dump(results_uniform, file_object, indent=2)
-
+with open('simulation_results_'+str(number_of_materials)+'_layers_uni.json', 'w') as file_object:
+    json.dump(results_uniform, file_object, indent=2)
 
 
 results = []
@@ -200,5 +216,5 @@ for i in tqdm(range(0,num_simulations)):
         results.append(result)
 
 
-with open('simulation_results_'+str(number_of_materials)+'_layers_non_uni_20000.json', 'w') as file_object:
+with open('simulation_results_'+str(number_of_materials)+'_layers_non_uni.json', 'w') as file_object:
     json.dump(results, file_object, indent=2)

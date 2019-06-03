@@ -3,9 +3,6 @@ FROM ubuntu:18.04
 RUN apt-get update -y
 RUN apt-get upgrade -y
 
-#docker build -t maxime_barnier_1 .
-#docker run -it maxime_barnier_1
-
 RUN apt-get install -y python3.pip
 RUN apt-get install -y python3.dev
 RUN apt-get install -y git
@@ -18,7 +15,7 @@ RUN git clone https://github.com/Barnier-Maxime/machine_learning_project.git
 # build with
 #     sudo docker build -t shimwell/openmc:latest .
 # run with
-#     docker run --net=host -it --rm -v /tmp/.X11-unix:/tmp/.X11-unix -v $PWD:/openmc_workshop/swap_space -e DISPLAY=unix$DISPLAY -e OPENMC_CROSS_SECTIONS=/openmc/nndc_hdf5/cross_sections.xml --privileged shimwell/openmc
+#     docker run --net=host -it --rm -v /tmp/.X11-unix:/tmp/.X11-unix -v $PWD:/machine_learning_project/swap_space -e DISPLAY=unix$DISPLAY -e OPENMC_CROSS_SECTIONS=/openmc/nndc_hdf5/cross_sections.xml --privileged shimwell/openmc
 # if you have no GUI in docker try running this xhost command prior to running the image
 #     xhost local:root
 # push to docker store with
@@ -82,6 +79,7 @@ RUN pip3 install pylint
 RUN pip3 install plotly
 RUN pip3 install tqdm
 RUN pip3 install ghalton
+RUN pip3 install noisyopt
 
 # Clone and install NJOY2016
 RUN git clone https://github.com/njoy/NJOY2016 /opt/NJOY2016 && \

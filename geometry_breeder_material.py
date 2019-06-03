@@ -39,8 +39,9 @@ def make_breeder_material(enrichment_fraction, breeder_material_name, temperatur
 
     return breeder_material
 
-def make_materials_geometry_tallies(batches,enrichment_fractions,breeder_material_name,temperature_in_C): #thickness fixed to 100cm and inner radius to 500cm
-    print('simulating ',batches,enrichment_fractions,'inner radius = 500','thickness = 100',breeder_material_name)
+def make_materials_geometry_tallies(enrichment_fractions,breeder_material_name,temperature_in_C,batches,nps,seed): #thickness fixed to 100cm and inner radius to 500cm
+    os.system('rm *.h5')
+    print('simulating ',' batches =',batches,'seed= ',seed, enrichment_fractions,'inner radius = 500','thickness = 100',breeder_material_name)
 
     number_of_materials=len(enrichment_fractions)
 
@@ -120,7 +121,8 @@ def make_materials_geometry_tallies(batches,enrichment_fractions,breeder_materia
     sett = openmc.Settings()
     sett.batches = batches
     sett.inactive = 0
-    sett.particles = 5000
+    sett.particles = nps
+    sett.seed = seed
     sett.run_mode = 'fixed source'
 
     source = openmc.Source()
@@ -166,55 +168,82 @@ def make_materials_geometry_tallies(batches,enrichment_fractions,breeder_materia
     print(json_output)
     return json_output
    
-os.system('rm *.h5')
-
-num_simulations=100
-number_of_materials = 3
-num_uniform_simulations=100
-
-results_uniform = []
-for i in tqdm(range(0,num_uniform_simulations+1)):
-        os.system('rm *.h5')
-        enrichment_fractions_simulation = []
-        breeder_material_name = 'Li'
-        
-        for j in range(0,number_of_materials):
-            enrichment_fractions_simulation.append((1.0/num_uniform_simulations)*i)
-
-        inner_radius = 500
-        thickness = 100
-
-        result = make_materials_geometry_tallies(batches=4,
-                                                enrichment_fractions=enrichment_fractions_simulation,
-                                                breeder_material_name = breeder_material_name, 
-                                                temperature_in_C=500
-                                                )
-        results_uniform.append(result)
+def find_tbr_dict(enrichment_fractions_simulation):
+    result = make_materials_geometry_tallies(enrichment_fractions=enrichment_fractions_simulation,
+                                            breeder_material_name = breeder_material_name, 
+                                            temperature_in_C=500,
+                                            batches=4,
+                                            nps=int(1e3)
+                                            )
+    return result
 
 
-with open('simulation_results_'+str(number_of_materials)+'_layers_uni.json', 'w') as file_object:
-    json.dump(results_uniform, file_object, indent=2)
+def find_tbr(enrichment_fractions_simulation):
+    result = make_materials_geometry_tallies(enrichment_fractions=enrichment_fractions_simulation,
+                                            breeder_material_name = 'Li', 
+                                            temperature_in_C=500,
+                                            batches=4,
+                                            nps=int(1e4)
+                                            )
+    return 1/result['value']
+
+def find_tbr_with_seed(enrichment_fractions_simulation, seed):
+    result = make_materials_geometry_tallies(enrichment_fractions=enrichment_fractions_simulation,
+                                            breeder_material_name = 'Li', 
+                                            temperature_in_C=500,
+                                            batches=4,
+                                            nps=int(1e4),
+                                            seed=seed
+                                            )
+    return 1/result['value']    
 
 
-results = []
-for i in tqdm(range(0,num_simulations)):
-        os.system('rm *.h5')
-        enrichment_fractions_simulation = []
-        breeder_material_name = 'Li'
-        
-        for j in range(0,number_of_materials):
-            enrichment_fractions_simulation.append(random.uniform(0, 1))
 
-        inner_radius = 500
-        thickness = 100
+if __name__ == "__main__":
+    num_simulations=100
+    number_of_materials = 3
+    num_uniform_simulations=100
+    breeder_material_name = 'Li'
 
-        result = make_materials_geometry_tallies(batches=4,
-                                                enrichment_fractions=enrichment_fractions_simulation,
-                                                breeder_material_name = breeder_material_name, 
-                                                temperature_in_C=500
-                                                )
-        results.append(result)
+    results_uniform = []
+    for i in tqdm(range(0,num_uniform_simulations+1)):
+
+            enrichment_fractions_simulation = []
+            
+            
+            for j in range(0,number_of_materials):
+                enrichment_fractions_simulation.append((1.0/num_uniform_simulations)*i)
+
+            inner_radius = 500
+            thickness = 100
+
+            result = find_tbr_dict(enrichment_fractions=enrichment_fractions_simulation)
+            results_uniform.append(result)
 
 
-with open('simulation_results_'+str(number_of_materials)+'_layers_non_uni.json', 'w') as file_object:
-    json.dump(results, file_object, indent=2)
+    with open('simulation_results_'+str(number_of_materials)+'_layers_uni.json', 'w') as file_object:
+        json.dump(results_uniform, file_object, indent=2)
+
+
+    results = []
+    for i in tqdm(range(0,num_simulations)):
+            os.system('rm *.h5')
+            enrichment_fractions_simulation = []
+            breeder_material_name = 'Li'
+            
+            for j in range(0,number_of_materials):
+                enrichment_fractions_simulation.append(random.uniform(0, 1))
+
+            inner_radius = 500
+            thickness = 100
+
+            result = make_materials_geometry_tallies(batches=4,
+                                                    enrichment_fractions=enrichment_fractions_simulation,
+                                                    breeder_material_name = breeder_material_name, 
+                                                    temperature_in_C=500
+                                                    )
+            results.append(result)
+
+
+    with open('simulation_results_'+str(number_of_materials)+'_layers_non_uni.json', 'w') as file_object:
+        json.dump(results, file_object, indent=2)

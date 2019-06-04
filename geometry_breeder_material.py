@@ -99,6 +99,7 @@ def make_materials_geometry_tallies(enrichment_fractions,breeder_material_name,t
     #openmc color by material
 
     #plt.show(universe.plot(width=(2000,2000),basis='xz',colors={inner_void_cell: 'blue',list_of_breeder_blanket_cell[0] : 'yellow',list_of_breeder_blanket_cell[1] : 'green', list_of_breeder_blanket_cell[2]: 'red'}))
+    
     # geom.export_to_xml()
     # p = openmc.Plot()
     # p.basis='xz'
@@ -168,26 +169,18 @@ def make_materials_geometry_tallies(enrichment_fractions,breeder_material_name,t
     print(json_output)
     return json_output
    
-def find_tbr_dict(enrichment_fractions_simulation):
+def find_tbr_dict(enrichment_fractions_simulation,seed=4):
     result = make_materials_geometry_tallies(enrichment_fractions=enrichment_fractions_simulation,
                                             breeder_material_name = breeder_material_name, 
                                             temperature_in_C=500,
                                             batches=4,
-                                            nps=int(1e3)
+                                            nps=int(1e3),
+                                            seed=seed
                                             )
     return result
 
 
-def find_tbr(enrichment_fractions_simulation):
-    result = make_materials_geometry_tallies(enrichment_fractions=enrichment_fractions_simulation,
-                                            breeder_material_name = 'Li', 
-                                            temperature_in_C=500,
-                                            batches=4,
-                                            nps=int(1e4)
-                                            )
-    return 1/result['value']
-
-def find_tbr_with_seed(enrichment_fractions_simulation, seed):
+def find_tbr(enrichment_fractions_simulation,seed=4):
     result = make_materials_geometry_tallies(enrichment_fractions=enrichment_fractions_simulation,
                                             breeder_material_name = 'Li', 
                                             temperature_in_C=500,
@@ -195,7 +188,9 @@ def find_tbr_with_seed(enrichment_fractions_simulation, seed):
                                             nps=int(1e4),
                                             seed=seed
                                             )
-    return 1/result['value']    
+    return 1/result['value']
+
+
 
 
 
@@ -217,7 +212,7 @@ if __name__ == "__main__":
             inner_radius = 500
             thickness = 100
 
-            result = find_tbr_dict(enrichment_fractions=enrichment_fractions_simulation)
+            result = find_tbr_dict(enrichment_fractions_simulation)
             results_uniform.append(result)
 
 

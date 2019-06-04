@@ -65,6 +65,8 @@ RUN pip3 install Matplotlib
 RUN pip3 install uncertainties
 RUN pip3 install lxml
 RUN pip3 install scipy
+RUN pip3 install noisyopt
+
 
 # Python Prerequisites Optional
 RUN pip3 install cython

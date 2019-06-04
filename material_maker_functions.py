@@ -55,6 +55,10 @@ def find_density_of_natural_material_at_temperature(breeder_material_name,temper
 
         return calculate_crystal_structure_density(natural_breeder_material,14,1.1543e-21)
 
+    if breeder_material_name == 'Li2TiO3':
+
+        return calculate_crystal_structure_density(natural_breeder_material,8,0.42259e-21)
+
 def make_copper():  
 
     copper = openmc.Material(name='Copper')

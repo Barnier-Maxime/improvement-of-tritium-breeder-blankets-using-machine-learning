@@ -47,7 +47,7 @@ def make_plot():
     max_tbr_plot=[]
     trace =[]
     df = pd.read_json('result.json')
-    for number_of_layers in [1,2]:
+    for number_of_layers in [1,2,3,4]:
         
         row_with_number_of_layers = df.loc[df['number_of_layers']==number_of_layers]
         #row_with_max_tbr_number_of_layers = df.loc[row_with_number_of_layers['max_tbr'].idxmax()]
@@ -77,5 +77,5 @@ def make_plot():
 
 
 if __name__ == "__main__":
-    simulate()
+    #simulate()
     make_plot()

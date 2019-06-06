@@ -20,7 +20,7 @@ def simulate():
 
     for number_of_layers in [1,2,3,4,5,6]:
 
-        with open('result.json') as file_object:
+        with open('result_scipy.json') as file_object:
             results = json.load(file_object)
 
         bounds=bounds+((0.0,1.0),)
@@ -28,7 +28,7 @@ def simulate():
         x0.append(0.5)
         x=np.asarray(x0)
         print(x0)
-        result = optimize.minimize(find_tbr, x0=x0, bounds=bnds)
+        result = optimize.minimize(find_tbr, x0=x0, bounds=bounds)
 
         print(result)
         print(1/result.fun)

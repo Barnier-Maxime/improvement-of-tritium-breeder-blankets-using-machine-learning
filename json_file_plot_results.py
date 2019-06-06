@@ -1,128 +1,99 @@
-import openmc
-import os
+
 import json
-import numpy as np
+import os
+
 import matplotlib.pyplot as plt
-from mpl_toolkits.mplot3d import Axes3D
-from material_maker_functions import *
-from plotly.offline import download_plotlyjs, plot
-import plotly.graph_objs as go
-from plotly.graph_objs import Scatter3d, Layout, Scatter
+import numpy as np
 import pandas as pd
+import plotly.graph_objs as go
+from mpl_toolkits.mplot3d import Axes3D
 from pandas.io.json import json_normalize
+from plotly.graph_objs import Layout, Scatter, Scatter3d
+from plotly.offline import download_plotlyjs, plot
 
-#################### ONLY WORKS FOR 3 LAYERS ########################
-with open('simulation_results_'+str(3)+'_layers_non_uni_20000.json') as f:
-    results_1 = json.load(f)
 
-with open('simulation_results_'+str(3)+'_layers_uni_.json') as f:
-    results_2 = json.load(f)
-# PLOTS RESULTS #
-x_axis_1 = []
-y_axis_1 = []
-z_axis_1 = []
-x_axis_2 = []
-y_axis_2 = []
-z_axis_2 = []
-TBR_1 = []
-TBR_2 = []
-text_list_1 =[]
-text_list_2 = []
-#print(results)
-for k in results_1: # creation of the 3 axis
-    x_axis_1.append(k['enrichment_value'][0])
-    y_axis_1.append(k['enrichment_value'][1])
-    z_axis_1.append(k['enrichment_value'][2])
-    TBR_1.append(k['value'])
-    text_list_1.append('TBR=' +str(k['value'])+'<br>'
-                    +'Enrichment first layer=' +str(k['enrichment_value'][0])+'<br>'
-                    +'Enrichment second layer=' +str(k['enrichment_value'][1])+'<br>'
-                    +'Enrichment third layer=' +str(k['enrichment_value'][2])
-                    )
+def make_trace_from_json(filename,material):
 
-results_df_1 = json_normalize(data=results_1)
+    #################### ONLY WORKS FOR 3 LAYERS ########################
+    df =pd.read_json(filename) 
+    df.loc[df['breeder_material_name']==material]
 
-for k in results_2: # creation of the 3 axis
-    x_axis_2.append(k['enrichment_value'][0])
-    y_axis_2.append(k['enrichment_value'][1])
-    z_axis_2.append(k['enrichment_value'][2])
-    TBR_2.append(k['value'])
-    text_list_2.append('TBR=' +str(k['value'])+'<br>'
-                    +'Enrichment first layer=' +str(k['enrichment_value'][0])+'<br>'
-                    +'Enrichment second layer=' +str(k['enrichment_value'][1])+'<br>'
-                    +'Enrichment third layer=' +str(k['enrichment_value'][2])
-                    )
 
-results_df_2 = json_normalize(data=results_2)
+    # PLOTS RESULTS #
+    x_axis = [item[0] for item in df['enrichment_value'].tolist()]
+    y_axis = [item[1] for item in df['enrichment_value'].tolist()]
+    z_axis = [item[2] for item in df['enrichment_value'].tolist()]
+    TBR = df['value'].tolist()
+    std_dev = df['std_dev'].tolist()
 
-trace1 = go.Scatter3d(
-    x=x_axis_1,
-    y=y_axis_1,
-    z=z_axis_1,
-    hoverinfo='text',
-    text=text_list_1,
-    mode='markers',
-    marker=dict(
-        size=2,
-        color=TBR_1,                # set color to an array/list of desired values
-        colorscale='Viridis',   # choose a colorscale
-        opacity=0.8
+    text_list =[]
+
+
+    for x,y,z,t,s in zip(x_axis,y_axis,z_axis,TBR,std_dev):
+        text_list.append('TBR=' +str(round(t,5))+' +- '+str(round(s,5))+'<br>'
+                        +'Enrichment first layer=' +str(round(x,5))+'<br>'
+                        +'Enrichment second layer=' +str(round(y,5))+'<br>'
+                        +'Enrichment third layer=' +str(round(z,5))
+                        )
+
+
+    trace = go.Scatter3d(
+        x=x_axis,
+        y=y_axis,
+        z=z_axis,
+        hoverinfo='text',
+        text=text_list,
+        mode='markers',
+        marker=dict(
+            size=2,
+            color=TBR,                # set color to an array/list of desired values
+            colorscale='Viridis',   # choose a colorscale
+            opacity=0.8
+        )
     )
-)
+    return trace
 
-trace2 = go.Scatter3d(
-    x=x_axis_2,
-    y=y_axis_2,
-    z=z_axis_2,
-    hoverinfo='text',
-    text=text_list_2,
-    mode='markers',
-    marker=dict(
-        size=2,
-        color=TBR_2,                # set color to an array/list of desired values
-        colorscale='Viridis',   # choose a colorscale
-        opacity=0.8
-    )
-)
+def make_buttons(titles):
 
-trace3 = go.Scatter3d(
-    x=x_axis_1 + x_axis_2,
-    y=y_axis_1 + y_axis_2,
-    z=z_axis_1 + z_axis_2,
-    hoverinfo='text',
-    text=text_list_1 + text_list_2,
-    mode='markers',
-    marker=dict(
-        size=2,
-        color=TBR_1 + TBR_2,                # set color to an array/list of desired values
-        colorscale='Viridis',   # choose a colorscale
-        opacity=0.8
-    )
-)
+    button_discriptions = []
+    
 
-data = [trace1, trace2, trace3]
+    for i, title in enumerate(titles):
+        true_false_list=[False]*len(titles)
+        true_false_list[i] = True
+        button_discriptions.append(dict(label = title,
+                                   method = 'update',
+                                   args = [{'visible': true_false_list},
+                                   {'title': title
+                                   }]))
 
-updatemenus = list([
-    dict(active=-1,
-         buttons=list([   
-            dict(label = 'Non uniform enrichment',
-                 method = 'update',
-                 args = [{'visible': [True, False, False]},
-                         {'title': 'TBR with non uniform enrichment fraction'
-                          }]),
-            dict(label = 'Uniform enrichment',
-                 method = 'update',
-                 args = [{'visible': [False, True, False]},
-                         {'title': 'TBR with uniform enrichment fraction'
-                          }]),
-            dict(label = 'Both',
-                 method = 'update',
-                 args = [{'visible': [False, False, True]},
-                         {'title': 'Both type of enrichment'
-                          }])
-        ]),
-    )
-])
+    updatemenus = list([
+        dict(active=-1,
+            buttons=list(button_discriptions),
+        )
+    ])
+
+    return updatemenus
+
+
+
+data=[]
+data.append(make_trace_from_json('simulation_results_'+str(3)+'_layers_non_uni.json','Li'))
+data.append(make_trace_from_json('simulation_results_'+str(3)+'_layers_uni.json','Li'))
+data.append(make_trace_from_json('simulation_results_'+str(3)+'_layers_non_uni.json','Li4SiO4'))
+data.append(make_trace_from_json('simulation_results_'+str(3)+'_layers_uni.json','Li4SiO4'))
+data.append(make_trace_from_json('simulation_results_'+str(3)+'_layers_non_uni.json','Li2TiO3'))
+data.append(make_trace_from_json('simulation_results_'+str(3)+'_layers_uni.json','Li2TiO3'))
+
+
+updatemenus = make_buttons(["TBR with non uniform enrichment fraction and Li",
+                            "TBR with uniform enrichment fraction and Li",
+                            "TBR with non uniform enrichment fraction and Li4SiO4",
+                            "TBR with uniform enrichment fraction and Li4SiO4",
+                            "TBR with non uniform enrichment fraction and Li2TiO3",
+                            "TBR with uniform enrichment fraction and Li2TiO3" ])
+
+
 
 layout = go.Layout(title='TBR as a function of enrichment fractions in Li6',
                    scene=dict(

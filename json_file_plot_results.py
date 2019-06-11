@@ -11,23 +11,20 @@ from pandas.io.json import json_normalize
 from plotly.graph_objs import Layout, Scatter, Scatter3d
 from plotly.offline import download_plotlyjs, plot
 
-
-def make_trace_from_json(filename,material):
+def make_trace_from_json(filename,material,graded,include_first_wall):
 
     #################### ONLY WORKS FOR 3 LAYERS ########################
     df =pd.read_json(filename) 
-    df.loc[df['breeder_material_name']==material]
-
+    filtered_df = df.loc[(df['breeder_material_name']==material) & (df['graded']==graded) & (df['first_wall']==include_first_wall)]
 
     # PLOTS RESULTS #
-    x_axis = [item[0] for item in df['enrichment_value'].tolist()]
-    y_axis = [item[1] for item in df['enrichment_value'].tolist()]
-    z_axis = [item[2] for item in df['enrichment_value'].tolist()]
-    TBR = df['value'].tolist()
-    std_dev = df['std_dev'].tolist()
+    x_axis = [item[0] for item in filtered_df['enrichment_value'].tolist()]
+    y_axis = [item[1] for item in filtered_df['enrichment_value'].tolist()]
+    z_axis = [item[2] for item in filtered_df['enrichment_value'].tolist()]
+    TBR = filtered_df['value'].tolist()
+    std_dev = filtered_df['std_dev'].tolist()
 
     text_list =[]
-
 
     for x,y,z,t,s in zip(x_axis,y_axis,z_axis,TBR,std_dev):
         text_list.append('TBR=' +str(round(t,5))+' +- '+str(round(s,5))+'<br>'
@@ -48,6 +45,7 @@ def make_trace_from_json(filename,material):
             size=2,
             color=TBR,                # set color to an array/list of desired values
             colorscale='Viridis',   # choose a colorscale
+            colorbar=dict(title='TBR'),
             opacity=0.8
         )
     )
@@ -78,20 +76,42 @@ def make_buttons(titles):
 
 
 data=[]
-data.append(make_trace_from_json('simulation_results_'+str(3)+'_layers_non_uni.json','Li'))
-data.append(make_trace_from_json('simulation_results_'+str(3)+'_layers_uni.json','Li'))
-data.append(make_trace_from_json('simulation_results_'+str(3)+'_layers_non_uni.json','Li4SiO4'))
-data.append(make_trace_from_json('simulation_results_'+str(3)+'_layers_uni.json','Li4SiO4'))
-data.append(make_trace_from_json('simulation_results_'+str(3)+'_layers_non_uni.json','Li2TiO3'))
-data.append(make_trace_from_json('simulation_results_'+str(3)+'_layers_uni.json','Li2TiO3'))
+data.append(make_trace_from_json('results/simulation_results_layers_random.json','Li','graded',True))
+data.append(make_trace_from_json('results/simulation_results_layers_random_no_first-wall.json','Li','graded',True)) #True that there is no 
+
+data.append(make_trace_from_json('results/simulation_results_layers_random.json','Li','uniform',True))
+data.append(make_trace_from_json('results/simulation_results_layers_random_no_first-wall.json','Li','uniform',True))
+
+data.append(make_trace_from_json('results/simulation_results_layers_random.json','Li4SiO4', 'graded',True))
+data.append(make_trace_from_json('results/simulation_results_layers_random_no_first-wall.json','Li4SiO4', 'graded',True))
+
+data.append(make_trace_from_json('results/simulation_results_layers_random.json','Li4SiO4', 'uniform',True))
+data.append(make_trace_from_json('results/simulation_results_layers_random_no_first-wall.json','Li4SiO4', 'uniform',True))
+
+data.append(make_trace_from_json('results/simulation_results_layers_random.json','Li2TiO3', 'graded',True))
+data.append(make_trace_from_json('results/simulation_results_layers_random_no_first-wall.json','Li2TiO3', 'graded',True))
+
+data.append(make_trace_from_json('results/simulation_results_layers_random.json','Li2TiO3', 'uniform',True))
+data.append(make_trace_from_json('results/simulation_results_layers_random_no_first-wall.json','Li2TiO3', 'uniform',True))
 
 
-updatemenus = make_buttons(["TBR with non uniform enrichment fraction and Li",
-                            "TBR with uniform enrichment fraction and Li",
-                            "TBR with non uniform enrichment fraction and Li4SiO4",
-                            "TBR with uniform enrichment fraction and Li4SiO4",
-                            "TBR with non uniform enrichment fraction and Li2TiO3",
-                            "TBR with uniform enrichment fraction and Li2TiO3" ])
+updatemenus = make_buttons(["TBR with non uniform enrichment fraction and Li with first wall",
+                            "TBR with non uniform enrichment fraction and Li without first wall",
+
+                            "TBR with uniform enrichment fraction and Li with first wall",
+                            "TBR with uniform enrichment fraction and Li without first wall",
+
+                            "TBR with non uniform enrichment fraction and Li4SiO4 with first wall",
+                            "TBR with non uniform enrichment fraction and Li4SiO4 without first wall",
+
+                            "TBR with uniform enrichment fraction and Li4SiO4 with first wall",
+                            "TBR with uniform enrichment fraction and Li4SiO4 without first wall",
+
+                            "TBR with non uniform enrichment fraction and Li2TiO3 with first wall",
+                            "TBR with non uniform enrichment fraction and Li2TiO3 without first wall",
+
+                            "TBR with uniform enrichment fraction and Li2TiO3 with first wall",
+                            "TBR with uniform enrichment fraction and Li2TiO3 without first wall" ])
 
 
 
@@ -110,4 +130,4 @@ layout = go.Layout(title='TBR as a function of enrichment fractions in Li6',
                     updatemenus = updatemenus
                     )
 fig = go.Figure(data=data, layout=layout)
-plot(fig,show_link=True,image='png')
+plot(fig,show_link=True,filename = 'plots/simulation_results_layers_random_no_first_wall.html',image='png')

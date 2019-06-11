@@ -26,7 +26,7 @@ def simulate():
         x0.append(0.5)
         x=np.asarray(x0)
         print(x0)
-        result = minimizeCompass(find_tbr, bounds=bounds, x0=x0, deltatol=0.01, paired=True, disp=True)
+        result = minimizeCompass(find_tbr, args=[['Li2TiO3',True]], bounds=bounds, x0=x0, deltatol=0.01, paired=True, disp=True)
         #result = minimizeCompass(find_tbr, bounds=bounds, x0=x0, deltatol=0.01, paired=False, disp=True)
 
         print(result)
@@ -39,14 +39,14 @@ def simulate():
         print('json_output',json_output)
         results.append(json_output)
 
-        with open('result.json','w') as file_object:
+        with open('results/result_noisyopt.json','w') as file_object:
             json.dump(results,file_object,indent=2)
 
 def make_plot():
     number_of_layers_plot=[]
     max_tbr_plot=[]
     trace =[]
-    df = pd.read_json('result.json')
+    df = pd.read_json('results/result_noisyopt.json')
     for number_of_layers in [1,2,3,4,5,6]:
         
         row_with_number_of_layers = df.loc[df['number_of_layers']==number_of_layers]
@@ -54,11 +54,11 @@ def make_plot():
 
         max_tbr = float(row_with_number_of_layers['max_tbr'])
 
-        # max_tbr_plot.append(max_tbr)
 
         # PLOTS RESULTS #
         number_of_layers_plot.append(number_of_layers)
         max_tbr_plot.append(max_tbr)
+
     trace = Scatter(x=number_of_layers_plot, 
                     y=max_tbr_plot,
                     name='Optimized tbr',
@@ -73,7 +73,7 @@ def make_plot():
     print(trace)
     plot({'data':[trace],
         'layout':layout},
-        filename='max_tbr_study_opti.html')
+        filename='plots/max_tbr_study_opti.html')
 
 
 if __name__ == "__main__":

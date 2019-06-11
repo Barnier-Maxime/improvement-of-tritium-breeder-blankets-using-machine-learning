@@ -11,7 +11,10 @@ from uncertainties import unumpy
 from material_maker_functions import *
 
 def make_breeder_material(enrichment_fraction, breeder_material_name, temperature_in_C,id): #give the chemical expression for the name
-
+    print('enrichment_fraction',enrichment_fraction)
+    if enrichment_fraction > 1.0:
+        enrichment_fraction = 1.0
+        print('enrichment can not be higher than 1.0')
     #density data from http://aries.ucsd.edu/LIB/PROPS/PANOS/matintro.html
 
     natural_breeder_material = openmc.Material(2, "natural_breeder_material")
@@ -39,12 +42,11 @@ def make_breeder_material(enrichment_fraction, breeder_material_name, temperatur
     breeder_material.set_density('atom/b-cm',atoms_per_barn_cm) 
 
     return breeder_material
-
-def make_materials_geometry_tallies(enrichment_fractions,breeder_material_name,temperature_in_C,batches,nps,seed,include_first_wall): #thickness fixed to 100cm and inner radius to 500cm
+def make_materials_geometry_tallies(enrichment_fractions, breeder_material_name, temperature_in_C, batches, nps, include_first_wall, seed): #thickness fixed to 100cm and inner radius to 500cm
     os.system('rm *.h5')
     os.system('rm *.xml')
-    print('simulating ',' batches =',batches,'seed= ',seed, enrichment_fractions,'inner radius = 500','thickness = 100',breeder_material_name)
-
+    print('simulating ',' batches =',batches,'seed = ',seed, 'nps', nps, 'enrichment_fractions', enrichment_fractions,'inner radius = 500','thickness = 100 breeder_material_name =',breeder_material_name)
+ 
     number_of_materials=len(enrichment_fractions)
 
     print(enrichment_fractions)
@@ -64,81 +66,53 @@ def make_materials_geometry_tallies(enrichment_fractions,breeder_material_name,t
     mats.export_to_xml()
 
     # #GEOMETRY#
-        if include_first_wall == True:
-            breeder_blanket_inner_surface = openmc.Sphere(r=498) #inner radius
-            first_wall_outer_surface = openmc.Sphere(r=500)
+    list_of_breeder_blanket_region = []
+    list_of_breeder_blanket_cell = []
             
-            inner_void_region = -breeder_blanket_inner_surface #inner radius
-            inner_void_cell = openmc.Cell(region=inner_void_region) 
-            inner_void_cell.name = 'inner_void'
-
-
-
-
-            first_wall_region = -first_wall_outer_surface & +breeder_blanket_inner_surface
-            first_wall_cell = openmc.Cell(region=first_wall_region)
-            first_wall_cell.name = 'first_wall'
-            first_wall_cell.fill = eurofer
-        
-
-        
-            list_of_breeder_blanket_region = []
-            list_of_breeder_blanket_cell = []
-            
-
-            for k in range(1,number_of_materials+1):
-
-                if k==number_of_materials:
-                    breeder_blanket_outer_surface= openmc.Sphere(r=500+100,boundary_type='vacuum')
-                else:
-                    breeder_blanket_outer_surface = openmc.Sphere(r=500+k*(100/number_of_materials)) #inner radius + thickness of each breeder material
-                
-                list_of_breeder_blanket_region.append(-breeder_blanket_outer_surface & +breeder_blanket_inner_surface)
-
-                breeder_cell = openmc.Cell(region=-breeder_blanket_outer_surface & +breeder_blanket_inner_surface)
-                breeder_cell.fill = list_of_breeder_materials[k-1]
-                breeder_cell.name = 'breeder_blanket' 
-
-                list_of_breeder_blanket_cell.append(breeder_cell)
-
-                if k!=number_of_materials:
-                    breeder_blanket_inner_surface = breeder_blanket_outer_surface
-        
-        
-            cells = [inner_void_cell, first_wall_cell] + list_of_breeder_blanket_cell
-
-            universe = openmc.Universe(cells = cells)
+    breeder_blanket_inner_surface_common = openmc.Sphere(r=500) #inner radius
+    inner_void_region = -breeder_blanket_inner_surface_common #inner radius
+    inner_void_cell = openmc.Cell(region=inner_void_region) 
+    inner_void_cell.name = 'inner_void'
+    for k in range(1,number_of_materials+1):
+        if k==number_of_materials:
+            breeder_blanket_outer_surface= openmc.Sphere(r=500+100,boundary_type='vacuum')
         else:
+            breeder_blanket_outer_surface = openmc.Sphere(r=500+k*(100/number_of_materials)) #inner radius + thickness of each breeder material
+                
+        list_of_breeder_blanket_region.append(-breeder_blanket_outer_surface & +breeder_blanket_inner_surface_common)
+
+        breeder_cell = openmc.Cell(region=-breeder_blanket_outer_surface & +breeder_blanket_inner_surface_common)
+        breeder_cell.fill = list_of_breeder_materials[k-1]
+        breeder_cell.name = 'breeder_blanket' 
+
+        list_of_breeder_blanket_cell.append(breeder_cell)
+
+        if k!=number_of_materials:
+            breeder_blanket_inner_surface_common = breeder_blanket_outer_surface
+
+    if include_first_wall == True:
+        breeder_blanket_inner_surface_wall = openmc.Sphere(r=498) #inner radius
+        first_wall_outer_surface = openmc.Sphere(r=500)
+            
+        inner_void_region_wall = -breeder_blanket_inner_surface_wall #inner radius
+        inner_void_cell_wall = openmc.Cell(region=inner_void_region_wall) 
+        inner_void_cell_wall.name = 'inner_void'
+
+        first_wall_region = -first_wall_outer_surface & +breeder_blanket_inner_surface_wall
+        first_wall_cell = openmc.Cell(region=first_wall_region)
+        first_wall_cell.name = 'first_wall'
+        first_wall_cell.fill = eurofer
+ 
+        cells = [inner_void_cell_wall, first_wall_cell] + list_of_breeder_blanket_cell
+
+    else:
         breeder_blanket_inner_surface = openmc.Sphere(r=500) #inner radius
-        
+            
         inner_void_region = -breeder_blanket_inner_surface #inner radius
         inner_void_cell = openmc.Cell(region=inner_void_region) 
         inner_void_cell.name = 'inner_void'
 
-        list_of_breeder_blanket_region = []
-        list_of_breeder_blanket_cell = []
-            
-
-        for k in range(1,number_of_materials+1):
-
-            if k==number_of_materials:
-                breeder_blanket_outer_surface= openmc.Sphere(r=500+100,boundary_type='vacuum')
-            else:
-                breeder_blanket_outer_surface = openmc.Sphere(r=500+k*(100/number_of_materials)) #inner radius + thickness of each breeder material
-                
-            list_of_breeder_blanket_region.append(-breeder_blanket_outer_surface & +breeder_blanket_inner_surface)
-
-            breeder_cell = openmc.Cell(region=-breeder_blanket_outer_surface & +breeder_blanket_inner_surface)
-            breeder_cell.fill = list_of_breeder_materials[k-1]
-            breeder_cell.name = 'breeder_blanket' 
-
-            list_of_breeder_blanket_cell.append(breeder_cell)
-
-            if k!=number_of_materials:
-                breeder_blanket_inner_surface = breeder_blanket_outer_surface
-        
-        
-    cells = [inner_void_cell] + list_of_breeder_blanket_cell
+        cells = [inner_void_cell] + list_of_breeder_blanket_cell
 
     universe = openmc.Universe(cells = cells)                       
 
@@ -146,8 +120,6 @@ def make_materials_geometry_tallies(enrichment_fractions,breeder_material_name,t
 
     #openmc color by material
 
-    #plt.show(universe.plot(width=(2000,2000),basis='xz',colors={inner_void_cell: 'blue',list_of_breeder_blanket_cell[0] : 'yellow',list_of_breeder_blanket_cell[1] : 'green', list_of_breeder_blanket_cell[2]: 'red'}))
-    
     geom.export_to_xml()
     # p = openmc.Plot()
     # p.basis='xz'
@@ -209,88 +181,45 @@ def make_materials_geometry_tallies(enrichment_fractions,breeder_material_name,t
         var+=sigma**2 #independance which is considered between the different layers
     tally_std_dev=(var)**(1/2)
 
-    json_output= {'enrichment_value':enrichment_fractions,
-                            'value': tally_result,
-                                 'std_dev': tally_std_dev,
-                                 'breeder_material_name':breeder_material_name
-                                }
+    if len(set(enrichment_fractions)) == 1:
+        graded = 'uniform'
+    else:
+        graded= 'graded'
+
+    json_output= {'first_wall':include_first_wall,
+                  'number_of_materials':len(enrichment_fractions),
+                  'graded':graded,
+                  'enrichment_value':enrichment_fractions,
+                  'value': tally_result,
+                  'std_dev': tally_std_dev,
+                  'breeder_material_name':breeder_material_name,
+                  'nps':nps
+                  }
 
     print(json_output)
     return json_output
    
-def find_tbr_dict(enrichment_fractions_simulation,seed=4):
+def find_tbr_dict(enrichment_fractions_simulation, breeder_material_name, include_first_wall, nps):
     result = make_materials_geometry_tallies(enrichment_fractions=enrichment_fractions_simulation,
                                             breeder_material_name = breeder_material_name, 
                                             temperature_in_C=500,
                                             batches=4,
-                                            nps=int(1e4),
-                                            seed=seed,
-                                            include_first_wall=True
+                                            nps=nps,
+                                            include_first_wall=include_first_wall,
+                                            seed=1
                                             )
     return result
 
 
-def find_tbr(enrichment_fractions_simulation,seed):
+def find_tbr(enrichment_fractions_simulation, seed=1):
     result = make_materials_geometry_tallies(enrichment_fractions=enrichment_fractions_simulation,
                                             breeder_material_name = 'Li', 
                                             temperature_in_C=500,
                                             batches=4,
-                                            nps=int(1e4),
-                                            seed=seed,
-                                            include_first_wall=False
+                                            nps=int(1000),
+                                            include_first_wall=True,
+                                            seed=seed
                                             )
     return 1/result['value']
 
 
-
-
-
-if __name__ == "__main__":
-    num_simulations=100
-    number_of_materials = 3
-    num_uniform_simulations=100
-    breeder_material_names = ['Li','Li4SiO4','Li2TiO3']
-
-    results_uniform = []
-    for i in tqdm(range(0,num_uniform_simulations+1)):
-
-            enrichment_fractions_simulation = []
-            breeder_material_name = random.choice(breeder_material_names)
-            for j in range(0,number_of_materials):
-                enrichment_fractions_simulation.append((1.0/num_uniform_simulations)*i)
-
-            inner_radius = 500
-            thickness = 100
-
-            result = find_tbr_dict(enrichment_fractions_simulation)
-            results_uniform.append(result)
-
-
-    with open('simulation_results_'+str(number_of_materials)+'_layers_uni_opti.json', 'w') as file_object:
-        json.dump(results_uniform, file_object, indent=2)
-
-
-    results = []
-    for i in tqdm(range(0,num_simulations)):
-            os.system('rm *.h5')
-            enrichment_fractions_simulation = []
-            breeder_material_name = random.choice(breeder_material_names)
-            
-            for j in range(0,number_of_materials):
-                enrichment_fractions_simulation.append(random.uniform(0, 1))
-
-            inner_radius = 500
-            thickness = 100
-
-            # result = make_materials_geometry_tallies(batches=4,
-            #                                         enrichment_fractions=enrichment_fractions_simulation,
-            #                                         breeder_material_name = breeder_material_name, 
-            #                                         temperature_in_C=500
-            #                                         )
-        
-            result = find_tbr_dict(enrichment_fractions_simulation)
-            results.append(result)
-
-
-    with open('simulation_results_'+str(number_of_materials)+'_layers_non_uni_opti.json', 'w') as file_object:
-        json.dump(results, file_object, indent=2)

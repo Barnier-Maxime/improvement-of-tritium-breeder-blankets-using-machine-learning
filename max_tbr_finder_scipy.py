@@ -15,15 +15,15 @@ def simulate():
     bounds=()
     x0=[]
 
-    with open('result_scipy.json','w') as file_object:
+    with open('results/result_scipy.json','w') as file_object:
         json.dump([],file_object,indent=2)    
 
-    for number_of_layers in [1,2,3,4,5,6]:
+    for number_of_layers in [1,2,3,4]:
 
-        with open('result_scipy.json') as file_object:
+        with open('results/result_scipy.json') as file_object:
             results = json.load(file_object)
 
-        bounds=bounds+((0.0,1.0),)
+        bounds=bounds+((0,int(1)),)
         print(bounds)
         x0.append(0.5)
         x=np.asarray(x0)
@@ -40,14 +40,14 @@ def simulate():
         print('json_output',json_output)
         results.append(json_output)
 
-        with open('result_scipy.json','w') as file_object:
+        with open('results/result_scipy.json','w') as file_object:
             json.dump(results,file_object,indent=2)
 
 def make_plot():
     number_of_layers_plot=[]
     max_tbr_plot=[]
     trace =[]
-    df = pd.read_json('result.json')
+    df = pd.read_json('results/esult_scipy.json')
     for number_of_layers in [1,2,3,4]:
         
         row_with_number_of_layers = df.loc[df['number_of_layers']==number_of_layers]
@@ -74,9 +74,9 @@ def make_plot():
     print(trace)
     plot({'data':[trace],
         'layout':layout},
-        filename='max_tbr_study_opti.html')
+        filename='plots/max_tbr_study_opti.html')
 
 
 if __name__ == "__main__":
-    #simulate()
+    simulate()
     make_plot()

@@ -42,7 +42,7 @@ def make_breeder_material(enrichment_fraction, breeder_material_name, temperatur
     breeder_material.set_density('atom/b-cm',atoms_per_barn_cm) 
 
     return breeder_material
-def make_materials_geometry_tallies(enrichment_fractions, breeder_material_name, temperature_in_C, batches, nps, include_first_wall, seed): #thickness fixed to 100cm and inner radius to 500cm
+def make_materials_geometry_tallies(enrichment_fractions, breeder_material_name, temperature_in_C, batches, nps, include_first_wall,seed): #thickness fixed to 100cm and inner radius to 500cm
     os.system('rm *.h5')
     os.system('rm *.xml')
     print('simulating ',' batches =',batches,'seed = ',seed, 'nps', nps, 'enrichment_fractions', enrichment_fractions,'inner radius = 500','thickness = 100 breeder_material_name =',breeder_material_name)
@@ -68,28 +68,7 @@ def make_materials_geometry_tallies(enrichment_fractions, breeder_material_name,
     # #GEOMETRY#
     list_of_breeder_blanket_region = []
     list_of_breeder_blanket_cell = []
-            
-    breeder_blanket_inner_surface_common = openmc.Sphere(r=500) #inner radius
-    inner_void_region = -breeder_blanket_inner_surface_common #inner radius
-    inner_void_cell = openmc.Cell(region=inner_void_region) 
-    inner_void_cell.name = 'inner_void'
-    for k in range(1,number_of_materials+1):
-        if k==number_of_materials:
-            breeder_blanket_outer_surface= openmc.Sphere(r=500+100,boundary_type='vacuum')
-        else:
-            breeder_blanket_outer_surface = openmc.Sphere(r=500+k*(100/number_of_materials)) #inner radius + thickness of each breeder material
-                
-        list_of_breeder_blanket_region.append(-breeder_blanket_outer_surface & +breeder_blanket_inner_surface_common)
-
-        breeder_cell = openmc.Cell(region=-breeder_blanket_outer_surface & +breeder_blanket_inner_surface_common)
-        breeder_cell.fill = list_of_breeder_materials[k-1]
-        breeder_cell.name = 'breeder_blanket' 
-
-        list_of_breeder_blanket_cell.append(breeder_cell)
-
-        if k!=number_of_materials:
-            breeder_blanket_inner_surface_common = breeder_blanket_outer_surface
-
+        
     if include_first_wall == True:
         breeder_blanket_inner_surface_wall = openmc.Sphere(r=498) #inner radius
         first_wall_outer_surface = openmc.Sphere(r=500)
@@ -102,17 +81,49 @@ def make_materials_geometry_tallies(enrichment_fractions, breeder_material_name,
         first_wall_cell = openmc.Cell(region=first_wall_region)
         first_wall_cell.name = 'first_wall'
         first_wall_cell.fill = eurofer
+        for k in range(1,number_of_materials+1):
+            if k==number_of_materials:
+                breeder_blanket_outer_surface= openmc.Sphere(r=500+100,boundary_type='vacuum')
+            else:
+                breeder_blanket_outer_surface = openmc.Sphere(r=500+k*(100/number_of_materials)) #inner radius + thickness of each breeder material
+                
+            list_of_breeder_blanket_region.append(-breeder_blanket_outer_surface & +first_wall_outer_surface)
+
+            breeder_cell = openmc.Cell(region=-breeder_blanket_outer_surface & +first_wall_outer_surface)
+            breeder_cell.fill = list_of_breeder_materials[k-1]
+            breeder_cell.name = 'breeder_blanket' 
+
+            list_of_breeder_blanket_cell.append(breeder_cell)
+
+            if k!=number_of_materials:
+                first_wall_outer_surface = breeder_blanket_outer_surface
  
         cells = [inner_void_cell_wall, first_wall_cell] + list_of_breeder_blanket_cell
 
     else:
-        breeder_blanket_inner_surface = openmc.Sphere(r=500) #inner radius
+        breeder_blanket_inner_surface_no_wall = openmc.Sphere(r=500) #inner radius
             
-        inner_void_region = -breeder_blanket_inner_surface #inner radius
-        inner_void_cell = openmc.Cell(region=inner_void_region) 
-        inner_void_cell.name = 'inner_void'
+        inner_void_region_no_wall = -breeder_blanket_inner_surface_no_wall #inner radius
+        inner_void_cell_no_wall = openmc.Cell(region=inner_void_region_no_wall) 
+        inner_void_cell_no_wall.name = 'inner_void'
 
-        cells = [inner_void_cell] + list_of_breeder_blanket_cell
+        for k in range(1,number_of_materials+1):
+                if k==number_of_materials:
+                    breeder_blanket_outer_surface= openmc.Sphere(r=500+100,boundary_type='vacuum')
+                else:
+                    breeder_blanket_outer_surface = openmc.Sphere(r=500+k*(100/number_of_materials)) #inner radius + thickness of each breeder material
+                
+                list_of_breeder_blanket_region.append(-breeder_blanket_outer_surface & +breeder_blanket_inner_surface_no_wall)
+
+                breeder_cell = openmc.Cell(region=-breeder_blanket_outer_surface & +breeder_blanket_inner_surface_no_wall)
+                breeder_cell.fill = list_of_breeder_materials[k-1]
+                breeder_cell.name = 'breeder_blanket' 
+
+                list_of_breeder_blanket_cell.append(breeder_cell)
+
+                if k!=number_of_materials:
+                    breeder_blanket_inner_surface_common = breeder_blanket_outer_surface
+                cells = [inner_void_cell_no_wall] + list_of_breeder_blanket_cell
 
     universe = openmc.Universe(cells = cells)                       
 
@@ -211,15 +222,14 @@ def find_tbr_dict(enrichment_fractions_simulation, breeder_material_name, includ
     return result
 
 
-def find_tbr(enrichment_fractions_simulation, seed=1):
+def find_tbr(enrichment_fractions_simulation, seed):
+
     result = make_materials_geometry_tallies(enrichment_fractions=enrichment_fractions_simulation,
                                             breeder_material_name = 'Li', 
                                             temperature_in_C=500,
                                             batches=4,
-                                            nps=int(1000),
-                                            include_first_wall=True,
+                                            nps=int(10000),
+                                            include_first_wall=False ,
                                             seed=seed
                                             )
     return 1/result['value']
-
-

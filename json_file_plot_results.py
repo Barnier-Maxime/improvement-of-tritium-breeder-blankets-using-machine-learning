@@ -74,60 +74,60 @@ def make_buttons(titles):
     return updatemenus
 
 
+if __name__ == '__main__':
+    data=[]
+    data.append(make_trace_from_json('results/simulation_results_layers_random.json','Li','graded',True))
+    data.append(make_trace_from_json('results/simulation_results_layers_random_no_first-wall.json','Li','graded',True)) #True that there is no first wall
 
-data=[]
-data.append(make_trace_from_json('results/simulation_results_layers_random.json','Li','graded',True))
-data.append(make_trace_from_json('results/simulation_results_layers_random_no_first-wall.json','Li','graded',True)) #True that there is no 
+    data.append(make_trace_from_json('results/simulation_results_layers_random.json','Li','uniform',True))
+    data.append(make_trace_from_json('results/simulation_results_layers_random_no_first-wall.json','Li','uniform',True))
 
-data.append(make_trace_from_json('results/simulation_results_layers_random.json','Li','uniform',True))
-data.append(make_trace_from_json('results/simulation_results_layers_random_no_first-wall.json','Li','uniform',True))
+    data.append(make_trace_from_json('results/simulation_results_layers_random.json','Li4SiO4', 'graded',True))
+    data.append(make_trace_from_json('results/simulation_results_layers_random_no_first-wall.json','Li4SiO4', 'graded',True))
 
-data.append(make_trace_from_json('results/simulation_results_layers_random.json','Li4SiO4', 'graded',True))
-data.append(make_trace_from_json('results/simulation_results_layers_random_no_first-wall.json','Li4SiO4', 'graded',True))
+    data.append(make_trace_from_json('results/simulation_results_layers_random.json','Li4SiO4', 'uniform',True))
+    data.append(make_trace_from_json('results/simulation_results_layers_random_no_first-wall.json','Li4SiO4', 'uniform',True))
 
-data.append(make_trace_from_json('results/simulation_results_layers_random.json','Li4SiO4', 'uniform',True))
-data.append(make_trace_from_json('results/simulation_results_layers_random_no_first-wall.json','Li4SiO4', 'uniform',True))
+    data.append(make_trace_from_json('results/simulation_results_layers_random.json','Li2TiO3', 'graded',True))
+    data.append(make_trace_from_json('results/simulation_results_layers_random_no_first-wall.json','Li2TiO3', 'graded',True))
 
-data.append(make_trace_from_json('results/simulation_results_layers_random.json','Li2TiO3', 'graded',True))
-data.append(make_trace_from_json('results/simulation_results_layers_random_no_first-wall.json','Li2TiO3', 'graded',True))
-
-data.append(make_trace_from_json('results/simulation_results_layers_random.json','Li2TiO3', 'uniform',True))
-data.append(make_trace_from_json('results/simulation_results_layers_random_no_first-wall.json','Li2TiO3', 'uniform',True))
-
-
-updatemenus = make_buttons(["TBR with non uniform enrichment fraction and Li with first wall",
-                            "TBR with non uniform enrichment fraction and Li without first wall",
-
-                            "TBR with uniform enrichment fraction and Li with first wall",
-                            "TBR with uniform enrichment fraction and Li without first wall",
-
-                            "TBR with non uniform enrichment fraction and Li4SiO4 with first wall",
-                            "TBR with non uniform enrichment fraction and Li4SiO4 without first wall",
-
-                            "TBR with uniform enrichment fraction and Li4SiO4 with first wall",
-                            "TBR with uniform enrichment fraction and Li4SiO4 without first wall",
-
-                            "TBR with non uniform enrichment fraction and Li2TiO3 with first wall",
-                            "TBR with non uniform enrichment fraction and Li2TiO3 without first wall",
-
-                            "TBR with uniform enrichment fraction and Li2TiO3 with first wall",
-                            "TBR with uniform enrichment fraction and Li2TiO3 without first wall" ])
+    data.append(make_trace_from_json('results/simulation_results_layers_random.json','Li2TiO3', 'uniform',True))
+    data.append(make_trace_from_json('results/simulation_results_layers_random_no_first-wall.json','Li2TiO3', 'uniform',True))
 
 
+    updatemenus = make_buttons(["TBR with non uniform enrichment fraction and Li with first wall",
+                                "TBR with non uniform enrichment fraction and Li without first wall",
 
-layout = go.Layout(title='TBR as a function of enrichment fractions in Li6',
-                   scene=dict(
-                                xaxis=dict(
-                                         title='Enrichment first layer'
-                                         ),
-                                yaxis=dict(
-                                        title='Enrichment second layer'
+                                "TBR with uniform enrichment fraction and Li with first wall",
+                                "TBR with uniform enrichment fraction and Li without first wall",
+
+                                "TBR with non uniform enrichment fraction and Li4SiO4 with first wall",
+                                "TBR with non uniform enrichment fraction and Li4SiO4 without first wall",
+
+                                "TBR with uniform enrichment fraction and Li4SiO4 with first wall",
+                                "TBR with uniform enrichment fraction and Li4SiO4 without first wall",
+
+                                "TBR with non uniform enrichment fraction and Li2TiO3 with first wall",
+                                "TBR with non uniform enrichment fraction and Li2TiO3 without first wall",
+
+                                "TBR with uniform enrichment fraction and Li2TiO3 with first wall",
+                                "TBR with uniform enrichment fraction and Li2TiO3 without first wall" ])
+
+
+
+    layout = go.Layout(title='TBR as a function of enrichment fractions in Li6',
+                    scene=dict(
+                                    xaxis=dict(
+                                            title='Enrichment first layer'
+                                            ),
+                                    yaxis=dict(
+                                            title='Enrichment second layer'
+                                    ),
+                                    zaxis=dict(
+                                            title='Enrichment third layer'
+                                    )
                                 ),
-                                zaxis=dict(
-                                        title='Enrichment third layer'
-                                )
-                            ),
-                    updatemenus = updatemenus
-                    )
-fig = go.Figure(data=data, layout=layout)
-plot(fig,show_link=True,filename = 'plots/simulation_results_layers_random_no_first_wall.html',image='png')
+                        updatemenus = updatemenus
+                        )
+    fig = go.Figure(data=data, layout=layout)
+    plot(fig,show_link=True,filename = 'plots/simulation_results_layers_random_no_first_wall.html',image='png')

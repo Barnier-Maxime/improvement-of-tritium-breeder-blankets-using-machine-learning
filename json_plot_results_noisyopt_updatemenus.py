@@ -83,7 +83,6 @@ if __name__ == '__main__':
                                 ])
 
 
-
     layout = go.Layout(title='Optimized max TBR with different materials with or without the first wall as a function of the number of layer',
                     scene=dict(
                                     xaxis=dict(

@@ -1,0 +1,44 @@
+[
+  {
+    "max_tbr": 1.0388281539670368,
+    "best_enrichment": [
+      0.04999999999999999
+    ],
+    "number_of_layers": 1,
+    "breeder_material_name": "Li4SiO4",
+    "include_first_wall": true
+  },
+  {
+    "max_tbr": 1.0456179336855207,
+    "best_enrichment": [
+      0.04999999999999999,
+      0.5
+    ],
+    "number_of_layers": 2,
+    "breeder_material_name": "Li4SiO4",
+    "include_first_wall": true
+  },
+  {
+    "max_tbr": 1.0481116372967034,
+    "best_enrichment": [
+      0.04999999999999999,
+      0.1,
+      1.0
+    ],
+    "number_of_layers": 3,
+    "breeder_material_name": "Li4SiO4",
+    "include_first_wall": true
+  },
+  {
+    "max_tbr": 1.0480738768968532,
+    "best_enrichment": [
+      0.04999999999999999,
+      0.04999999999999999,
+      0.0,
+      1.0
+    ],
+    "number_of_layers": 4,
+    "breeder_material_name": "Li4SiO4",
+    "include_first_wall": true
+  }
+]

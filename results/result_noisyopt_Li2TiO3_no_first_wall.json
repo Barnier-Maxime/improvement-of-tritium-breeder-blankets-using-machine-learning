@@ -1,0 +1,44 @@
+[
+  {
+    "max_tbr": 1.0224492744950018,
+    "best_enrichment": [
+      0.15
+    ],
+    "number_of_layers": 1,
+    "breeder_material_name": "Li2TiO3",
+    "include_first_wall": false
+  },
+  {
+    "max_tbr": 1.0211051119243517,
+    "best_enrichment": [
+      0.15,
+      0.5
+    ],
+    "number_of_layers": 2,
+    "breeder_material_name": "Li2TiO3",
+    "include_first_wall": false
+  },
+  {
+    "max_tbr": 1.0224286980102069,
+    "best_enrichment": [
+      0.15,
+      0.5,
+      0.5
+    ],
+    "number_of_layers": 3,
+    "breeder_material_name": "Li2TiO3",
+    "include_first_wall": false
+  },
+  {
+    "max_tbr": 1.0238955554497815,
+    "best_enrichment": [
+      0.15,
+      0.5,
+      0.5,
+      0.5
+    ],
+    "number_of_layers": 4,
+    "breeder_material_name": "Li2TiO3",
+    "include_first_wall": false
+  }
+]

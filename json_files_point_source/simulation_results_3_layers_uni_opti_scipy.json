@@ -1,0 +1,1012 @@
+[
+  {
+    "enrichment_value": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "value": 0.8304919753548841,
+    "std_dev": 0.0022239669389203538,
+    "breeder_material_name": "Li"
+  },
+  {
+    "enrichment_value": [
+      0.01,
+      0.01,
+      0.01
+    ],
+    "value": 1.2142622511756969,
+    "std_dev": 0.0028709739493215374,
+    "breeder_material_name": "Li"
+  },
+  {
+    "enrichment_value": [
+      0.02,
+      0.02,
+      0.02
+    ],
+    "value": 1.2908062604708117,
+    "std_dev": 0.0016660437534524379,
+    "breeder_material_name": "Li"
+  },
+  {
+    "enrichment_value": [
+      0.03,
+      0.03,
+      0.03
+    ],
+    "value": 1.3383763447650903,
+    "std_dev": 0.002070644730287635,
+    "breeder_material_name": "Li"
+  },
+  {
+    "enrichment_value": [
+      0.04,
+      0.04,
+      0.04
+    ],
+    "value": 1.374567384926173,
+    "std_dev": 0.0012855309305449128,
+    "breeder_material_name": "Li"
+  },
+  {
+    "enrichment_value": [
+      0.05,
+      0.05,
+      0.05
+    ],
+    "value": 1.3988124834680586,
+    "std_dev": 0.001969946741572358,
+    "breeder_material_name": "Li"
+  },
+  {
+    "enrichment_value": [
+      0.06,
+      0.06,
+      0.06
+    ],
+    "value": 1.4149417179465735,
+    "std_dev": 0.0024449678980208865,
+    "breeder_material_name": "Li"
+  },
+  {
+    "enrichment_value": [
+      0.07,
+      0.07,
+      0.07
+    ],
+    "value": 1.4291847983210615,
+    "std_dev": 0.002518226639287045,
+    "breeder_material_name": "Li"
+  },
+  {
+    "enrichment_value": [
+      0.08,
+      0.08,
+      0.08
+    ],
+    "value": 1.4411639713711493,
+    "std_dev": 0.001959534390998124,
+    "breeder_material_name": "Li"
+  },
+  {
+    "enrichment_value": [
+      0.09,
+      0.09,
+      0.09
+    ],
+    "value": 1.448815145827255,
+    "std_dev": 0.0030962702109850046,
+    "breeder_material_name": "Li"
+  },
+  {
+    "enrichment_value": [
+      0.1,
+      0.1,
+      0.1
+    ],
+    "value": 1.4550987340095634,
+    "std_dev": 0.0028659363244090885,
+    "breeder_material_name": "Li"
+  },
+  {
+    "enrichment_value": [
+      0.11,
+      0.11,
+      0.11
+    ],
+    "value": 1.4623796581302915,
+    "std_dev": 0.004224303782295958,
+    "breeder_material_name": "Li"
+  },
+  {
+    "enrichment_value": [
+      0.12,
+      0.12,
+      0.12
+    ],
+    "value": 1.4683056348030872,
+    "std_dev": 0.0034353298583577807,
+    "breeder_material_name": "Li"
+  },
+  {
+    "enrichment_value": [
+      0.13,
+      0.13,
+      0.13
+    ],
+    "value": 1.4711760914555063,
+    "std_dev": 0.0029388717206668994,
+    "breeder_material_name": "Li"
+  },
+  {
+    "enrichment_value": [
+      0.14,
+      0.14,
+      0.14
+    ],
+    "value": 1.474626734477642,
+    "std_dev": 0.0027951680230497845,
+    "breeder_material_name": "Li"
+  },
+  {
+    "enrichment_value": [
+      0.15,
+      0.15,
+      0.15
+    ],
+    "value": 1.4749654521435374,
+    "std_dev": 0.0026575699494391014,
+    "breeder_material_name": "Li"
+  },
+  {
+    "enrichment_value": [
+      0.16,
+      0.16,
+      0.16
+    ],
+    "value": 1.473351689679377,
+    "std_dev": 0.003945343650399514,
+    "breeder_material_name": "Li"
+  },
+  {
+    "enrichment_value": [
+      0.17,
+      0.17,
+      0.17
+    ],
+    "value": 1.4732818221241495,
+    "std_dev": 0.0033207363986162,
+    "breeder_material_name": "Li"
+  },
+  {
+    "enrichment_value": [
+      0.18,
+      0.18,
+      0.18
+    ],
+    "value": 1.4714482757128102,
+    "std_dev": 0.0036955710810929084,
+    "breeder_material_name": "Li"
+  },
+  {
+    "enrichment_value": [
+      0.19,
+      0.19,
+      0.19
+    ],
+    "value": 1.471562831494788,
+    "std_dev": 0.004032226797471981,
+    "breeder_material_name": "Li"
+  },
+  {
+    "enrichment_value": [
+      0.2,
+      0.2,
+      0.2
+    ],
+    "value": 1.4675943538893341,
+    "std_dev": 0.003738221527457453,
+    "breeder_material_name": "Li"
+  },
+  {
+    "enrichment_value": [
+      0.21,
+      0.21,
+      0.21
+    ],
+    "value": 1.4625001347568585,
+    "std_dev": 0.003869571061653326,
+    "breeder_material_name": "Li"
+  },
+  {
+    "enrichment_value": [
+      0.22,
+      0.22,
+      0.22
+    ],
+    "value": 1.4593317988217493,
+    "std_dev": 0.004521232443765354,
+    "breeder_material_name": "Li"
+  },
+  {
+    "enrichment_value": [
+      0.23,
+      0.23,
+      0.23
+    ],
+    "value": 1.4552956718307184,
+    "std_dev": 0.004285873267677673,
+    "breeder_material_name": "Li"
+  },
+  {
+    "enrichment_value": [
+      0.24,
+      0.24,
+      0.24
+    ],
+    "value": 1.4517854569211681,
+    "std_dev": 0.003923291924985338,
+    "breeder_material_name": "Li"
+  },
+  {
+    "enrichment_value": [
+      0.25,
+      0.25,
+      0.25
+    ],
+    "value": 1.4465129231843514,
+    "std_dev": 0.003159942850511921,
+    "breeder_material_name": "Li"
+  },
+  {
+    "enrichment_value": [
+      0.26,
+      0.26,
+      0.26
+    ],
+    "value": 1.4441990596948435,
+    "std_dev": 0.0031828177900671746,
+    "breeder_material_name": "Li"
+  },
+  {
+    "enrichment_value": [
+      0.27,
+      0.27,
+      0.27
+    ],
+    "value": 1.4378979259445628,
+    "std_dev": 0.002754811647443969,
+    "breeder_material_name": "Li"
+  },
+  {
+    "enrichment_value": [
+      0.28,
+      0.28,
+      0.28
+    ],
+    "value": 1.431038236657427,
+    "std_dev": 0.0024948393707227377,
+    "breeder_material_name": "Li"
+  },
+  {
+    "enrichment_value": [
+      0.29,
+      0.29,
+      0.29
+    ],
+    "value": 1.4250786018323018,
+    "std_dev": 0.002597380397251093,
+    "breeder_material_name": "Li"
+  },
+  {
+    "enrichment_value": [
+      0.3,
+      0.3,
+      0.3
+    ],
+    "value": 1.4228738590298267,
+    "std_dev": 0.003033461484703653,
+    "breeder_material_name": "Li"
+  },
+  {
+    "enrichment_value": [
+      0.31,
+      0.31,
+      0.31
+    ],
+    "value": 1.417385536124617,
+    "std_dev": 0.002911875924901351,
+    "breeder_material_name": "Li"
+  },
+  {
+    "enrichment_value": [
+      0.32,
+      0.32,
+      0.32
+    ],
+    "value": 1.41530757515226,
+    "std_dev": 0.0029206043064535408,
+    "breeder_material_name": "Li"
+  },
+  {
+    "enrichment_value": [
+      0.33,
+      0.33,
+      0.33
+    ],
+    "value": 1.4106302877006074,
+    "std_dev": 0.0022989992038274583,
+    "breeder_material_name": "Li"
+  },
+  {
+    "enrichment_value": [
+      0.34,
+      0.34,
+      0.34
+    ],
+    "value": 1.40023543230722,
+    "std_dev": 0.002655081963528637,
+    "breeder_material_name": "Li"
+  },
+  {
+    "enrichment_value": [
+      0.35000000000000003,
+      0.35000000000000003,
+      0.35000000000000003
+    ],
+    "value": 1.3947734484278291,
+    "std_dev": 0.003408329668754879,
+    "breeder_material_name": "Li"
+  },
+  {
+    "enrichment_value": [
+      0.36,
+      0.36,
+      0.36
+    ],
+    "value": 1.3871709282500497,
+    "std_dev": 0.003008741382176506,
+    "breeder_material_name": "Li"
+  },
+  {
+    "enrichment_value": [
+      0.37,
+      0.37,
+      0.37
+    ],
+    "value": 1.3827203538007875,
+    "std_dev": 0.00299561086806586,
+    "breeder_material_name": "Li"
+  },
+  {
+    "enrichment_value": [
+      0.38,
+      0.38,
+      0.38
+    ],
+    "value": 1.376170297387422,
+    "std_dev": 0.0036219153563450722,
+    "breeder_material_name": "Li"
+  },
+  {
+    "enrichment_value": [
+      0.39,
+      0.39,
+      0.39
+    ],
+    "value": 1.3701870604711839,
+    "std_dev": 0.003281544905937992,
+    "breeder_material_name": "Li"
+  },
+  {
+    "enrichment_value": [
+      0.4,
+      0.4,
+      0.4
+    ],
+    "value": 1.3616872260995874,
+    "std_dev": 0.004183542479656813,
+    "breeder_material_name": "Li"
+  },
+  {
+    "enrichment_value": [
+      0.41000000000000003,
+      0.41000000000000003,
+      0.41000000000000003
+    ],
+    "value": 1.3566452219965544,
+    "std_dev": 0.004179986108397434,
+    "breeder_material_name": "Li"
+  },
+  {
+    "enrichment_value": [
+      0.42,
+      0.42,
+      0.42
+    ],
+    "value": 1.3494416014114012,
+    "std_dev": 0.0041538463930603405,
+    "breeder_material_name": "Li"
+  },
+  {
+    "enrichment_value": [
+      0.43,
+      0.43,
+      0.43
+    ],
+    "value": 1.3462600113959966,
+    "std_dev": 0.003340973758973369,
+    "breeder_material_name": "Li"
+  },
+  {
+    "enrichment_value": [
+      0.44,
+      0.44,
+      0.44
+    ],
+    "value": 1.3420498713406455,
+    "std_dev": 0.0037733554496619075,
+    "breeder_material_name": "Li"
+  },
+  {
+    "enrichment_value": [
+      0.45,
+      0.45,
+      0.45
+    ],
+    "value": 1.3362172806664698,
+    "std_dev": 0.004293085200854396,
+    "breeder_material_name": "Li"
+  },
+  {
+    "enrichment_value": [
+      0.46,
+      0.46,
+      0.46
+    ],
+    "value": 1.3297882865219854,
+    "std_dev": 0.0046732448023987655,
+    "breeder_material_name": "Li"
+  },
+  {
+    "enrichment_value": [
+      0.47000000000000003,
+      0.47000000000000003,
+      0.47000000000000003
+    ],
+    "value": 1.3217638808494314,
+    "std_dev": 0.004877233022817042,
+    "breeder_material_name": "Li"
+  },
+  {
+    "enrichment_value": [
+      0.48,
+      0.48,
+      0.48
+    ],
+    "value": 1.315563749841229,
+    "std_dev": 0.004649175291253354,
+    "breeder_material_name": "Li"
+  },
+  {
+    "enrichment_value": [
+      0.49,
+      0.49,
+      0.49
+    ],
+    "value": 1.308835051228724,
+    "std_dev": 0.004547361642719321,
+    "breeder_material_name": "Li"
+  },
+  {
+    "enrichment_value": [
+      0.5,
+      0.5,
+      0.5
+    ],
+    "value": 1.301209454446099,
+    "std_dev": 0.005038199162846188,
+    "breeder_material_name": "Li"
+  },
+  {
+    "enrichment_value": [
+      0.51,
+      0.51,
+      0.51
+    ],
+    "value": 1.2945706304281857,
+    "std_dev": 0.005149293879441118,
+    "breeder_material_name": "Li"
+  },
+  {
+    "enrichment_value": [
+      0.52,
+      0.52,
+      0.52
+    ],
+    "value": 1.2890239292204577,
+    "std_dev": 0.006093605548838536,
+    "breeder_material_name": "Li"
+  },
+  {
+    "enrichment_value": [
+      0.53,
+      0.53,
+      0.53
+    ],
+    "value": 1.2836893578775546,
+    "std_dev": 0.006150955572648606,
+    "breeder_material_name": "Li"
+  },
+  {
+    "enrichment_value": [
+      0.54,
+      0.54,
+      0.54
+    ],
+    "value": 1.275583820392133,
+    "std_dev": 0.005469975399922167,
+    "breeder_material_name": "Li"
+  },
+  {
+    "enrichment_value": [
+      0.55,
+      0.55,
+      0.55
+    ],
+    "value": 1.2695722838546257,
+    "std_dev": 0.00516375516226391,
+    "breeder_material_name": "Li"
+  },
+  {
+    "enrichment_value": [
+      0.56,
+      0.56,
+      0.56
+    ],
+    "value": 1.2635171824711697,
+    "std_dev": 0.006020288937207054,
+    "breeder_material_name": "Li"
+  },
+  {
+    "enrichment_value": [
+      0.5700000000000001,
+      0.5700000000000001,
+      0.5700000000000001
+    ],
+    "value": 1.2557211697314155,
+    "std_dev": 0.0060229765949048235,
+    "breeder_material_name": "Li"
+  },
+  {
+    "enrichment_value": [
+      0.58,
+      0.58,
+      0.58
+    ],
+    "value": 1.2506556235778277,
+    "std_dev": 0.00565694356803649,
+    "breeder_material_name": "Li"
+  },
+  {
+    "enrichment_value": [
+      0.59,
+      0.59,
+      0.59
+    ],
+    "value": 1.2448775365080818,
+    "std_dev": 0.0049490456429399894,
+    "breeder_material_name": "Li"
+  },
+  {
+    "enrichment_value": [
+      0.6,
+      0.6,
+      0.6
+    ],
+    "value": 1.2372568799928059,
+    "std_dev": 0.005490287841945951,
+    "breeder_material_name": "Li"
+  },
+  {
+    "enrichment_value": [
+      0.61,
+      0.61,
+      0.61
+    ],
+    "value": 1.231239901803855,
+    "std_dev": 0.005651248563542328,
+    "breeder_material_name": "Li"
+  },
+  {
+    "enrichment_value": [
+      0.62,
+      0.62,
+      0.62
+    ],
+    "value": 1.2263851169371223,
+    "std_dev": 0.005314402397424631,
+    "breeder_material_name": "Li"
+  },
+  {
+    "enrichment_value": [
+      0.63,
+      0.63,
+      0.63
+    ],
+    "value": 1.2224656745356735,
+    "std_dev": 0.005818715251870929,
+    "breeder_material_name": "Li"
+  },
+  {
+    "enrichment_value": [
+      0.64,
+      0.64,
+      0.64
+    ],
+    "value": 1.2160573520733307,
+    "std_dev": 0.005759667648463387,
+    "breeder_material_name": "Li"
+  },
+  {
+    "enrichment_value": [
+      0.65,
+      0.65,
+      0.65
+    ],
+    "value": 1.2083250736437967,
+    "std_dev": 0.005463848217249587,
+    "breeder_material_name": "Li"
+  },
+  {
+    "enrichment_value": [
+      0.66,
+      0.66,
+      0.66
+    ],
+    "value": 1.2028470093146215,
+    "std_dev": 0.0056925608973428235,
+    "breeder_material_name": "Li"
+  },
+  {
+    "enrichment_value": [
+      0.67,
+      0.67,
+      0.67
+    ],
+    "value": 1.1950153834286377,
+    "std_dev": 0.005465791770033904,
+    "breeder_material_name": "Li"
+  },
+  {
+    "enrichment_value": [
+      0.68,
+      0.68,
+      0.68
+    ],
+    "value": 1.1866871538951467,
+    "std_dev": 0.004921662620313072,
+    "breeder_material_name": "Li"
+  },
+  {
+    "enrichment_value": [
+      0.6900000000000001,
+      0.6900000000000001,
+      0.6900000000000001
+    ],
+    "value": 1.1802188658764492,
+    "std_dev": 0.005195134997313255,
+    "breeder_material_name": "Li"
+  },
+  {
+    "enrichment_value": [
+      0.7000000000000001,
+      0.7000000000000001,
+      0.7000000000000001
+    ],
+    "value": 1.1725515621341744,
+    "std_dev": 0.00508713823858348,
+    "breeder_material_name": "Li"
+  },
+  {
+    "enrichment_value": [
+      0.71,
+      0.71,
+      0.71
+    ],
+    "value": 1.1670999938252635,
+    "std_dev": 0.004252610584489484,
+    "breeder_material_name": "Li"
+  },
+  {
+    "enrichment_value": [
+      0.72,
+      0.72,
+      0.72
+    ],
+    "value": 1.1594638268022388,
+    "std_dev": 0.0044249549007807885,
+    "breeder_material_name": "Li"
+  },
+  {
+    "enrichment_value": [
+      0.73,
+      0.73,
+      0.73
+    ],
+    "value": 1.15473339627124,
+    "std_dev": 0.004404023084604998,
+    "breeder_material_name": "Li"
+  },
+  {
+    "enrichment_value": [
+      0.74,
+      0.74,
+      0.74
+    ],
+    "value": 1.144729803083941,
+    "std_dev": 0.0038641500779680133,
+    "breeder_material_name": "Li"
+  },
+  {
+    "enrichment_value": [
+      0.75,
+      0.75,
+      0.75
+    ],
+    "value": 1.1382706069902049,
+    "std_dev": 0.0036931469748706955,
+    "breeder_material_name": "Li"
+  },
+  {
+    "enrichment_value": [
+      0.76,
+      0.76,
+      0.76
+    ],
+    "value": 1.1327024074651055,
+    "std_dev": 0.00437446016264018,
+    "breeder_material_name": "Li"
+  },
+  {
+    "enrichment_value": [
+      0.77,
+      0.77,
+      0.77
+    ],
+    "value": 1.1265872257316012,
+    "std_dev": 0.004247528741367125,
+    "breeder_material_name": "Li"
+  },
+  {
+    "enrichment_value": [
+      0.78,
+      0.78,
+      0.78
+    ],
+    "value": 1.1204545744674226,
+    "std_dev": 0.004947408355789289,
+    "breeder_material_name": "Li"
+  },
+  {
+    "enrichment_value": [
+      0.79,
+      0.79,
+      0.79
+    ],
+    "value": 1.1142957064929644,
+    "std_dev": 0.004448842081814813,
+    "breeder_material_name": "Li"
+  },
+  {
+    "enrichment_value": [
+      0.8,
+      0.8,
+      0.8
+    ],
+    "value": 1.1090471757875742,
+    "std_dev": 0.0037108590867573565,
+    "breeder_material_name": "Li"
+  },
+  {
+    "enrichment_value": [
+      0.81,
+      0.81,
+      0.81
+    ],
+    "value": 1.1037753620861375,
+    "std_dev": 0.003837410951408397,
+    "breeder_material_name": "Li"
+  },
+  {
+    "enrichment_value": [
+      0.8200000000000001,
+      0.8200000000000001,
+      0.8200000000000001
+    ],
+    "value": 1.097972281218654,
+    "std_dev": 0.0040351842574904645,
+    "breeder_material_name": "Li"
+  },
+  {
+    "enrichment_value": [
+      0.8300000000000001,
+      0.8300000000000001,
+      0.8300000000000001
+    ],
+    "value": 1.0948043691462799,
+    "std_dev": 0.0033187116582077893,
+    "breeder_material_name": "Li"
+  },
+  {
+    "enrichment_value": [
+      0.84,
+      0.84,
+      0.84
+    ],
+    "value": 1.0898347117152236,
+    "std_dev": 0.002726800195923598,
+    "breeder_material_name": "Li"
+  },
+  {
+    "enrichment_value": [
+      0.85,
+      0.85,
+      0.85
+    ],
+    "value": 1.0834574852603567,
+    "std_dev": 0.0027347727044710326,
+    "breeder_material_name": "Li"
+  },
+  {
+    "enrichment_value": [
+      0.86,
+      0.86,
+      0.86
+    ],
+    "value": 1.0790806371216934,
+    "std_dev": 0.0029420281811126264,
+    "breeder_material_name": "Li"
+  },
+  {
+    "enrichment_value": [
+      0.87,
+      0.87,
+      0.87
+    ],
+    "value": 1.0746923487225628,
+    "std_dev": 0.0033091528745937816,
+    "breeder_material_name": "Li"
+  },
+  {
+    "enrichment_value": [
+      0.88,
+      0.88,
+      0.88
+    ],
+    "value": 1.0666943282397403,
+    "std_dev": 0.0031393995759810673,
+    "breeder_material_name": "Li"
+  },
+  {
+    "enrichment_value": [
+      0.89,
+      0.89,
+      0.89
+    ],
+    "value": 1.060493148531629,
+    "std_dev": 0.0035065350584537226,
+    "breeder_material_name": "Li"
+  },
+  {
+    "enrichment_value": [
+      0.9,
+      0.9,
+      0.9
+    ],
+    "value": 1.0555157006649938,
+    "std_dev": 0.004187397467794363,
+    "breeder_material_name": "Li"
+  },
+  {
+    "enrichment_value": [
+      0.91,
+      0.91,
+      0.91
+    ],
+    "value": 1.0520114854188916,
+    "std_dev": 0.003967644248968917,
+    "breeder_material_name": "Li"
+  },
+  {
+    "enrichment_value": [
+      0.92,
+      0.92,
+      0.92
+    ],
+    "value": 1.0461055100525842,
+    "std_dev": 0.004717303015763666,
+    "breeder_material_name": "Li"
+  },
+  {
+    "enrichment_value": [
+      0.93,
+      0.93,
+      0.93
+    ],
+    "value": 1.042020727012592,
+    "std_dev": 0.00484608833099268,
+    "breeder_material_name": "Li"
+  },
+  {
+    "enrichment_value": [
+      0.9400000000000001,
+      0.9400000000000001,
+      0.9400000000000001
+    ],
+    "value": 1.0354875126181007,
+    "std_dev": 0.00514069071041041,
+    "breeder_material_name": "Li"
+  },
+  {
+    "enrichment_value": [
+      0.9500000000000001,
+      0.9500000000000001,
+      0.9500000000000001
+    ],
+    "value": 1.0309425062048632,
+    "std_dev": 0.004663263175685875,
+    "breeder_material_name": "Li"
+  },
+  {
+    "enrichment_value": [
+      0.96,
+      0.96,
+      0.96
+    ],
+    "value": 1.0243735585242681,
+    "std_dev": 0.004116741058298965,
+    "breeder_material_name": "Li"
+  },
+  {
+    "enrichment_value": [
+      0.97,
+      0.97,
+      0.97
+    ],
+    "value": 1.0195608698766199,
+    "std_dev": 0.004191795517716378,
+    "breeder_material_name": "Li"
+  },
+  {
+    "enrichment_value": [
+      0.98,
+      0.98,
+      0.98
+    ],
+    "value": 1.0153481033734804,
+    "std_dev": 0.004708731498936923,
+    "breeder_material_name": "Li"
+  },
+  {
+    "enrichment_value": [
+      0.99,
+      0.99,
+      0.99
+    ],
+    "value": 1.0098380578625252,
+    "std_dev": 0.005585809294089629,
+    "breeder_material_name": "Li"
+  },
+  {
+    "enrichment_value": [
+      1.0,
+      1.0,
+      1.0
+    ],
+    "value": 1.0040720701290693,
+    "std_dev": 0.005096723506933022,
+    "breeder_material_name": "Li"
+  }
+]

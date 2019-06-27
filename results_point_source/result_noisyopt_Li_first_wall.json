@@ -1,0 +1,44 @@
+[
+  {
+    "max_tbr": 1.379155231666407,
+    "best_enrichment": [
+      0.15
+    ],
+    "number_of_layers": 1,
+    "breeder_material_name": "Li",
+    "include_first_wall": true
+  },
+  {
+    "max_tbr": 1.4715126745378042,
+    "best_enrichment": [
+      0.0,
+      0.75
+    ],
+    "number_of_layers": 2,
+    "breeder_material_name": "Li",
+    "include_first_wall": true
+  },
+  {
+    "max_tbr": 1.494250073872692,
+    "best_enrichment": [
+      0.0,
+      0.024999999999999994,
+      1.0
+    ],
+    "number_of_layers": 3,
+    "breeder_material_name": "Li",
+    "include_first_wall": true
+  },
+  {
+    "max_tbr": 1.492672845322313,
+    "best_enrichment": [
+      0.0,
+      0.05,
+      0.15000000000000002,
+      1.0
+    ],
+    "number_of_layers": 4,
+    "breeder_material_name": "Li",
+    "include_first_wall": true
+  }
+]

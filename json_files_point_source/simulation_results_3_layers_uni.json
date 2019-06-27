@@ -1,0 +1,1012 @@
+[
+  {
+    "enrichment_value": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "value": 0.1985537511056393,
+    "std_dev": 0.0008804158701837961,
+    "breeder_material_name": "Li2TiO3"
+  },
+  {
+    "enrichment_value": [
+      0.01,
+      0.01,
+      0.01
+    ],
+    "value": 1.0192610753032056,
+    "std_dev": 0.0023356049883173175,
+    "breeder_material_name": "Li4SiO4"
+  },
+  {
+    "enrichment_value": [
+      0.02,
+      0.02,
+      0.02
+    ],
+    "value": 1.0249907411553758,
+    "std_dev": 0.005420480005463764,
+    "breeder_material_name": "Li4SiO4"
+  },
+  {
+    "enrichment_value": [
+      0.03,
+      0.03,
+      0.03
+    ],
+    "value": 1.3315487847220722,
+    "std_dev": 0.003147399950050867,
+    "breeder_material_name": "Li"
+  },
+  {
+    "enrichment_value": [
+      0.04,
+      0.04,
+      0.04
+    ],
+    "value": 1.0302904088121794,
+    "std_dev": 0.0029421928843778805,
+    "breeder_material_name": "Li4SiO4"
+  },
+  {
+    "enrichment_value": [
+      0.05,
+      0.05,
+      0.05
+    ],
+    "value": 1.3897300517202407,
+    "std_dev": 0.0034565116418643627,
+    "breeder_material_name": "Li"
+  },
+  {
+    "enrichment_value": [
+      0.06,
+      0.06,
+      0.06
+    ],
+    "value": 1.0345450497942783,
+    "std_dev": 0.0032480802290313594,
+    "breeder_material_name": "Li4SiO4"
+  },
+  {
+    "enrichment_value": [
+      0.07,
+      0.07,
+      0.07
+    ],
+    "value": 1.010766230049763,
+    "std_dev": 0.0027197419860204505,
+    "breeder_material_name": "Li2TiO3"
+  },
+  {
+    "enrichment_value": [
+      0.08,
+      0.08,
+      0.08
+    ],
+    "value": 1.4364209832328803,
+    "std_dev": 0.004456010261902061,
+    "breeder_material_name": "Li"
+  },
+  {
+    "enrichment_value": [
+      0.09,
+      0.09,
+      0.09
+    ],
+    "value": 1.0245400402319926,
+    "std_dev": 0.0020271970451479103,
+    "breeder_material_name": "Li2TiO3"
+  },
+  {
+    "enrichment_value": [
+      0.1,
+      0.1,
+      0.1
+    ],
+    "value": 1.0275807950413642,
+    "std_dev": 0.0024650497119514427,
+    "breeder_material_name": "Li4SiO4"
+  },
+  {
+    "enrichment_value": [
+      0.11,
+      0.11,
+      0.11
+    ],
+    "value": 1.0219951190516188,
+    "std_dev": 0.0035399470795459695,
+    "breeder_material_name": "Li4SiO4"
+  },
+  {
+    "enrichment_value": [
+      0.12,
+      0.12,
+      0.12
+    ],
+    "value": 1.4649271954153877,
+    "std_dev": 0.0044677492849223965,
+    "breeder_material_name": "Li"
+  },
+  {
+    "enrichment_value": [
+      0.13,
+      0.13,
+      0.13
+    ],
+    "value": 1.4669940223792453,
+    "std_dev": 0.0038311411486626292,
+    "breeder_material_name": "Li"
+  },
+  {
+    "enrichment_value": [
+      0.14,
+      0.14,
+      0.14
+    ],
+    "value": 1.0246434129335835,
+    "std_dev": 0.004002549880188525,
+    "breeder_material_name": "Li2TiO3"
+  },
+  {
+    "enrichment_value": [
+      0.15,
+      0.15,
+      0.15
+    ],
+    "value": 1.4704665461920399,
+    "std_dev": 0.005128541715465237,
+    "breeder_material_name": "Li"
+  },
+  {
+    "enrichment_value": [
+      0.16,
+      0.16,
+      0.16
+    ],
+    "value": 1.4743573740409393,
+    "std_dev": 0.005008744812145122,
+    "breeder_material_name": "Li"
+  },
+  {
+    "enrichment_value": [
+      0.17,
+      0.17,
+      0.17
+    ],
+    "value": 1.0102875210532045,
+    "std_dev": 0.004806331886639747,
+    "breeder_material_name": "Li4SiO4"
+  },
+  {
+    "enrichment_value": [
+      0.18,
+      0.18,
+      0.18
+    ],
+    "value": 1.0094423562311783,
+    "std_dev": 0.004536939120442672,
+    "breeder_material_name": "Li4SiO4"
+  },
+  {
+    "enrichment_value": [
+      0.19,
+      0.19,
+      0.19
+    ],
+    "value": 1.0283204972496076,
+    "std_dev": 0.0053360546372925215,
+    "breeder_material_name": "Li2TiO3"
+  },
+  {
+    "enrichment_value": [
+      0.2,
+      0.2,
+      0.2
+    ],
+    "value": 1.4682155391339482,
+    "std_dev": 0.005966789948832362,
+    "breeder_material_name": "Li"
+  },
+  {
+    "enrichment_value": [
+      0.21,
+      0.21,
+      0.21
+    ],
+    "value": 1.4661037564246095,
+    "std_dev": 0.005554789984618323,
+    "breeder_material_name": "Li"
+  },
+  {
+    "enrichment_value": [
+      0.22,
+      0.22,
+      0.22
+    ],
+    "value": 1.0173612355479182,
+    "std_dev": 0.004670669167436457,
+    "breeder_material_name": "Li2TiO3"
+  },
+  {
+    "enrichment_value": [
+      0.23,
+      0.23,
+      0.23
+    ],
+    "value": 1.4577779498393841,
+    "std_dev": 0.004604327091802543,
+    "breeder_material_name": "Li"
+  },
+  {
+    "enrichment_value": [
+      0.24,
+      0.24,
+      0.24
+    ],
+    "value": 0.9941289713022216,
+    "std_dev": 0.004008947979039788,
+    "breeder_material_name": "Li4SiO4"
+  },
+  {
+    "enrichment_value": [
+      0.25,
+      0.25,
+      0.25
+    ],
+    "value": 0.989736085484837,
+    "std_dev": 0.004848886686881619,
+    "breeder_material_name": "Li4SiO4"
+  },
+  {
+    "enrichment_value": [
+      0.26,
+      0.26,
+      0.26
+    ],
+    "value": 1.0140852575694936,
+    "std_dev": 0.003438041068694484,
+    "breeder_material_name": "Li2TiO3"
+  },
+  {
+    "enrichment_value": [
+      0.27,
+      0.27,
+      0.27
+    ],
+    "value": 1.4439765513908347,
+    "std_dev": 0.005313142468472023,
+    "breeder_material_name": "Li"
+  },
+  {
+    "enrichment_value": [
+      0.28,
+      0.28,
+      0.28
+    ],
+    "value": 1.0106147879753533,
+    "std_dev": 0.0050573553520763615,
+    "breeder_material_name": "Li2TiO3"
+  },
+  {
+    "enrichment_value": [
+      0.29,
+      0.29,
+      0.29
+    ],
+    "value": 0.9733761900481999,
+    "std_dev": 0.004363520156770873,
+    "breeder_material_name": "Li4SiO4"
+  },
+  {
+    "enrichment_value": [
+      0.3,
+      0.3,
+      0.3
+    ],
+    "value": 0.971828454864202,
+    "std_dev": 0.004523522748088636,
+    "breeder_material_name": "Li4SiO4"
+  },
+  {
+    "enrichment_value": [
+      0.31,
+      0.31,
+      0.31
+    ],
+    "value": 1.0086480511302685,
+    "std_dev": 0.0046297152466048255,
+    "breeder_material_name": "Li2TiO3"
+  },
+  {
+    "enrichment_value": [
+      0.32,
+      0.32,
+      0.32
+    ],
+    "value": 0.9663098322967588,
+    "std_dev": 0.006983799783723863,
+    "breeder_material_name": "Li4SiO4"
+  },
+  {
+    "enrichment_value": [
+      0.33,
+      0.33,
+      0.33
+    ],
+    "value": 1.005165334028179,
+    "std_dev": 0.004006005303752737,
+    "breeder_material_name": "Li2TiO3"
+  },
+  {
+    "enrichment_value": [
+      0.34,
+      0.34,
+      0.34
+    ],
+    "value": 0.9625970138203805,
+    "std_dev": 0.00500722359564293,
+    "breeder_material_name": "Li4SiO4"
+  },
+  {
+    "enrichment_value": [
+      0.35000000000000003,
+      0.35000000000000003,
+      0.35000000000000003
+    ],
+    "value": 1.007546704698355,
+    "std_dev": 0.003633724897515727,
+    "breeder_material_name": "Li2TiO3"
+  },
+  {
+    "enrichment_value": [
+      0.36,
+      0.36,
+      0.36
+    ],
+    "value": 0.9607697822390772,
+    "std_dev": 0.004750190898722349,
+    "breeder_material_name": "Li4SiO4"
+  },
+  {
+    "enrichment_value": [
+      0.37,
+      0.37,
+      0.37
+    ],
+    "value": 0.961210175293402,
+    "std_dev": 0.004459757855146957,
+    "breeder_material_name": "Li4SiO4"
+  },
+  {
+    "enrichment_value": [
+      0.38,
+      0.38,
+      0.38
+    ],
+    "value": 1.0011872845028533,
+    "std_dev": 0.004075555784076568,
+    "breeder_material_name": "Li2TiO3"
+  },
+  {
+    "enrichment_value": [
+      0.39,
+      0.39,
+      0.39
+    ],
+    "value": 1.0009829056991493,
+    "std_dev": 0.004992613487383107,
+    "breeder_material_name": "Li2TiO3"
+  },
+  {
+    "enrichment_value": [
+      0.4,
+      0.4,
+      0.4
+    ],
+    "value": 0.9558006200704974,
+    "std_dev": 0.0034200891463185795,
+    "breeder_material_name": "Li4SiO4"
+  },
+  {
+    "enrichment_value": [
+      0.41000000000000003,
+      0.41000000000000003,
+      0.41000000000000003
+    ],
+    "value": 0.9999708394306372,
+    "std_dev": 0.0024329049756945972,
+    "breeder_material_name": "Li2TiO3"
+  },
+  {
+    "enrichment_value": [
+      0.42,
+      0.42,
+      0.42
+    ],
+    "value": 0.9991426701106176,
+    "std_dev": 0.0040710532428122545,
+    "breeder_material_name": "Li2TiO3"
+  },
+  {
+    "enrichment_value": [
+      0.43,
+      0.43,
+      0.43
+    ],
+    "value": 1.3419622204875514,
+    "std_dev": 0.0041915118376704905,
+    "breeder_material_name": "Li"
+  },
+  {
+    "enrichment_value": [
+      0.44,
+      0.44,
+      0.44
+    ],
+    "value": 0.9928626967862976,
+    "std_dev": 0.0032694859770023336,
+    "breeder_material_name": "Li2TiO3"
+  },
+  {
+    "enrichment_value": [
+      0.45,
+      0.45,
+      0.45
+    ],
+    "value": 0.9916356474691331,
+    "std_dev": 0.0039007741711975063,
+    "breeder_material_name": "Li2TiO3"
+  },
+  {
+    "enrichment_value": [
+      0.46,
+      0.46,
+      0.46
+    ],
+    "value": 1.3201928556422589,
+    "std_dev": 0.0036914812507592093,
+    "breeder_material_name": "Li"
+  },
+  {
+    "enrichment_value": [
+      0.47000000000000003,
+      0.47000000000000003,
+      0.47000000000000003
+    ],
+    "value": 0.9373619040925065,
+    "std_dev": 0.00224709659896509,
+    "breeder_material_name": "Li4SiO4"
+  },
+  {
+    "enrichment_value": [
+      0.48,
+      0.48,
+      0.48
+    ],
+    "value": 0.9901655704691777,
+    "std_dev": 0.0031314920526868775,
+    "breeder_material_name": "Li2TiO3"
+  },
+  {
+    "enrichment_value": [
+      0.49,
+      0.49,
+      0.49
+    ],
+    "value": 0.9910355145954074,
+    "std_dev": 0.00277116531009663,
+    "breeder_material_name": "Li2TiO3"
+  },
+  {
+    "enrichment_value": [
+      0.5,
+      0.5,
+      0.5
+    ],
+    "value": 1.2998122965904562,
+    "std_dev": 0.003537740643744621,
+    "breeder_material_name": "Li"
+  },
+  {
+    "enrichment_value": [
+      0.51,
+      0.51,
+      0.51
+    ],
+    "value": 0.986784017279671,
+    "std_dev": 0.00398064005749056,
+    "breeder_material_name": "Li2TiO3"
+  },
+  {
+    "enrichment_value": [
+      0.52,
+      0.52,
+      0.52
+    ],
+    "value": 0.9862561088235845,
+    "std_dev": 0.002689387993544522,
+    "breeder_material_name": "Li2TiO3"
+  },
+  {
+    "enrichment_value": [
+      0.53,
+      0.53,
+      0.53
+    ],
+    "value": 1.2802052110712603,
+    "std_dev": 0.004790548925907303,
+    "breeder_material_name": "Li"
+  },
+  {
+    "enrichment_value": [
+      0.54,
+      0.54,
+      0.54
+    ],
+    "value": 0.9212939819816214,
+    "std_dev": 0.002623812275678149,
+    "breeder_material_name": "Li4SiO4"
+  },
+  {
+    "enrichment_value": [
+      0.55,
+      0.55,
+      0.55
+    ],
+    "value": 0.917372114403885,
+    "std_dev": 0.002324799447398048,
+    "breeder_material_name": "Li4SiO4"
+  },
+  {
+    "enrichment_value": [
+      0.56,
+      0.56,
+      0.56
+    ],
+    "value": 0.9140625418702832,
+    "std_dev": 0.0016026276915555098,
+    "breeder_material_name": "Li4SiO4"
+  },
+  {
+    "enrichment_value": [
+      0.5700000000000001,
+      0.5700000000000001,
+      0.5700000000000001
+    ],
+    "value": 0.9786347306528558,
+    "std_dev": 0.003135752342454341,
+    "breeder_material_name": "Li2TiO3"
+  },
+  {
+    "enrichment_value": [
+      0.58,
+      0.58,
+      0.58
+    ],
+    "value": 1.2447305530704478,
+    "std_dev": 0.004668627729114575,
+    "breeder_material_name": "Li"
+  },
+  {
+    "enrichment_value": [
+      0.59,
+      0.59,
+      0.59
+    ],
+    "value": 0.976550297842523,
+    "std_dev": 0.0017231442566948208,
+    "breeder_material_name": "Li2TiO3"
+  },
+  {
+    "enrichment_value": [
+      0.6,
+      0.6,
+      0.6
+    ],
+    "value": 0.9748627229204389,
+    "std_dev": 0.0023196466909069864,
+    "breeder_material_name": "Li2TiO3"
+  },
+  {
+    "enrichment_value": [
+      0.61,
+      0.61,
+      0.61
+    ],
+    "value": 0.9738568202193242,
+    "std_dev": 0.00419167222347665,
+    "breeder_material_name": "Li2TiO3"
+  },
+  {
+    "enrichment_value": [
+      0.62,
+      0.62,
+      0.62
+    ],
+    "value": 0.9708246202847651,
+    "std_dev": 0.00370786097232895,
+    "breeder_material_name": "Li2TiO3"
+  },
+  {
+    "enrichment_value": [
+      0.63,
+      0.63,
+      0.63
+    ],
+    "value": 0.898311777231431,
+    "std_dev": 0.004149938176690038,
+    "breeder_material_name": "Li4SiO4"
+  },
+  {
+    "enrichment_value": [
+      0.64,
+      0.64,
+      0.64
+    ],
+    "value": 1.204297870463249,
+    "std_dev": 0.0043978841148456715,
+    "breeder_material_name": "Li"
+  },
+  {
+    "enrichment_value": [
+      0.65,
+      0.65,
+      0.65
+    ],
+    "value": 1.1997954697991127,
+    "std_dev": 0.004597570515126258,
+    "breeder_material_name": "Li"
+  },
+  {
+    "enrichment_value": [
+      0.66,
+      0.66,
+      0.66
+    ],
+    "value": 1.1929143923684735,
+    "std_dev": 0.004894002715879312,
+    "breeder_material_name": "Li"
+  },
+  {
+    "enrichment_value": [
+      0.67,
+      0.67,
+      0.67
+    ],
+    "value": 0.8891870646429856,
+    "std_dev": 0.003515033502517967,
+    "breeder_material_name": "Li4SiO4"
+  },
+  {
+    "enrichment_value": [
+      0.68,
+      0.68,
+      0.68
+    ],
+    "value": 1.1813583354677437,
+    "std_dev": 0.004973749957731677,
+    "breeder_material_name": "Li"
+  },
+  {
+    "enrichment_value": [
+      0.6900000000000001,
+      0.6900000000000001,
+      0.6900000000000001
+    ],
+    "value": 0.8805834517038614,
+    "std_dev": 0.0028757376250736735,
+    "breeder_material_name": "Li4SiO4"
+  },
+  {
+    "enrichment_value": [
+      0.7000000000000001,
+      0.7000000000000001,
+      0.7000000000000001
+    ],
+    "value": 1.1697720928930415,
+    "std_dev": 0.005029527496223169,
+    "breeder_material_name": "Li"
+  },
+  {
+    "enrichment_value": [
+      0.71,
+      0.71,
+      0.71
+    ],
+    "value": 0.8782390554886276,
+    "std_dev": 0.0029286857111888204,
+    "breeder_material_name": "Li4SiO4"
+  },
+  {
+    "enrichment_value": [
+      0.72,
+      0.72,
+      0.72
+    ],
+    "value": 1.1557058023485127,
+    "std_dev": 0.0048485048994168015,
+    "breeder_material_name": "Li"
+  },
+  {
+    "enrichment_value": [
+      0.73,
+      0.73,
+      0.73
+    ],
+    "value": 1.1500260225020935,
+    "std_dev": 0.005713641666201268,
+    "breeder_material_name": "Li"
+  },
+  {
+    "enrichment_value": [
+      0.74,
+      0.74,
+      0.74
+    ],
+    "value": 1.142926480508614,
+    "std_dev": 0.0058769594803858025,
+    "breeder_material_name": "Li"
+  },
+  {
+    "enrichment_value": [
+      0.75,
+      0.75,
+      0.75
+    ],
+    "value": 0.953071591821079,
+    "std_dev": 0.005313472138660537,
+    "breeder_material_name": "Li2TiO3"
+  },
+  {
+    "enrichment_value": [
+      0.76,
+      0.76,
+      0.76
+    ],
+    "value": 0.8655048022299803,
+    "std_dev": 0.003136307488253732,
+    "breeder_material_name": "Li4SiO4"
+  },
+  {
+    "enrichment_value": [
+      0.77,
+      0.77,
+      0.77
+    ],
+    "value": 0.8612574557553334,
+    "std_dev": 0.0037185719606273515,
+    "breeder_material_name": "Li4SiO4"
+  },
+  {
+    "enrichment_value": [
+      0.78,
+      0.78,
+      0.78
+    ],
+    "value": 1.117057420653081,
+    "std_dev": 0.005050340556638863,
+    "breeder_material_name": "Li"
+  },
+  {
+    "enrichment_value": [
+      0.79,
+      0.79,
+      0.79
+    ],
+    "value": 0.9454499907921452,
+    "std_dev": 0.0054766398556550045,
+    "breeder_material_name": "Li2TiO3"
+  },
+  {
+    "enrichment_value": [
+      0.8,
+      0.8,
+      0.8
+    ],
+    "value": 0.9438837733808267,
+    "std_dev": 0.004993875065546895,
+    "breeder_material_name": "Li2TiO3"
+  },
+  {
+    "enrichment_value": [
+      0.81,
+      0.81,
+      0.81
+    ],
+    "value": 1.1019993109149697,
+    "std_dev": 0.00522740410081878,
+    "breeder_material_name": "Li"
+  },
+  {
+    "enrichment_value": [
+      0.8200000000000001,
+      0.8200000000000001,
+      0.8200000000000001
+    ],
+    "value": 1.0956041822651308,
+    "std_dev": 0.0049959390189502845,
+    "breeder_material_name": "Li"
+  },
+  {
+    "enrichment_value": [
+      0.8300000000000001,
+      0.8300000000000001,
+      0.8300000000000001
+    ],
+    "value": 0.8455464274247363,
+    "std_dev": 0.0027755364453079918,
+    "breeder_material_name": "Li4SiO4"
+  },
+  {
+    "enrichment_value": [
+      0.84,
+      0.84,
+      0.84
+    ],
+    "value": 0.9371074436361402,
+    "std_dev": 0.004143680972442981,
+    "breeder_material_name": "Li2TiO3"
+  },
+  {
+    "enrichment_value": [
+      0.85,
+      0.85,
+      0.85
+    ],
+    "value": 0.9338913001523295,
+    "std_dev": 0.004047255936222673,
+    "breeder_material_name": "Li2TiO3"
+  },
+  {
+    "enrichment_value": [
+      0.86,
+      0.86,
+      0.86
+    ],
+    "value": 0.8366287288267104,
+    "std_dev": 0.0024151842761672144,
+    "breeder_material_name": "Li4SiO4"
+  },
+  {
+    "enrichment_value": [
+      0.87,
+      0.87,
+      0.87
+    ],
+    "value": 0.8366465553568765,
+    "std_dev": 0.002823621353164183,
+    "breeder_material_name": "Li4SiO4"
+  },
+  {
+    "enrichment_value": [
+      0.88,
+      0.88,
+      0.88
+    ],
+    "value": 0.9315783308523415,
+    "std_dev": 0.003956269916699536,
+    "breeder_material_name": "Li2TiO3"
+  },
+  {
+    "enrichment_value": [
+      0.89,
+      0.89,
+      0.89
+    ],
+    "value": 0.8318685113688044,
+    "std_dev": 0.003081501547797169,
+    "breeder_material_name": "Li4SiO4"
+  },
+  {
+    "enrichment_value": [
+      0.9,
+      0.9,
+      0.9
+    ],
+    "value": 1.0528606809708505,
+    "std_dev": 0.004778623095388601,
+    "breeder_material_name": "Li"
+  },
+  {
+    "enrichment_value": [
+      0.91,
+      0.91,
+      0.91
+    ],
+    "value": 1.0459886638786107,
+    "std_dev": 0.005023187301281348,
+    "breeder_material_name": "Li"
+  },
+  {
+    "enrichment_value": [
+      0.92,
+      0.92,
+      0.92
+    ],
+    "value": 0.9288217751460356,
+    "std_dev": 0.006006048107824639,
+    "breeder_material_name": "Li2TiO3"
+  },
+  {
+    "enrichment_value": [
+      0.93,
+      0.93,
+      0.93
+    ],
+    "value": 0.924093276563064,
+    "std_dev": 0.006555013658704979,
+    "breeder_material_name": "Li2TiO3"
+  },
+  {
+    "enrichment_value": [
+      0.9400000000000001,
+      0.9400000000000001,
+      0.9400000000000001
+    ],
+    "value": 0.9232245961209053,
+    "std_dev": 0.006573286455290181,
+    "breeder_material_name": "Li2TiO3"
+  },
+  {
+    "enrichment_value": [
+      0.9500000000000001,
+      0.9500000000000001,
+      0.9500000000000001
+    ],
+    "value": 1.0235455105068776,
+    "std_dev": 0.004898027845223179,
+    "breeder_material_name": "Li"
+  },
+  {
+    "enrichment_value": [
+      0.96,
+      0.96,
+      0.96
+    ],
+    "value": 1.0173389454792146,
+    "std_dev": 0.004535405312961051,
+    "breeder_material_name": "Li"
+  },
+  {
+    "enrichment_value": [
+      0.97,
+      0.97,
+      0.97
+    ],
+    "value": 0.9137021923629443,
+    "std_dev": 0.0056339057069057785,
+    "breeder_material_name": "Li2TiO3"
+  },
+  {
+    "enrichment_value": [
+      0.98,
+      0.98,
+      0.98
+    ],
+    "value": 0.9113602051106787,
+    "std_dev": 0.005267079559657409,
+    "breeder_material_name": "Li2TiO3"
+  },
+  {
+    "enrichment_value": [
+      0.99,
+      0.99,
+      0.99
+    ],
+    "value": 0.9990693506221597,
+    "std_dev": 0.004889668031040023,
+    "breeder_material_name": "Li"
+  },
+  {
+    "enrichment_value": [
+      1.0,
+      1.0,
+      1.0
+    ],
+    "value": 0.8104870628976877,
+    "std_dev": 0.0032270749493778614,
+    "breeder_material_name": "Li4SiO4"
+  }
+]

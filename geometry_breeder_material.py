@@ -42,6 +42,7 @@ def make_breeder_material(enrichment_fraction, breeder_material_name, temperatur
     breeder_material.set_density('atom/b-cm',atoms_per_barn_cm) 
 
     return breeder_material
+
 def make_materials_geometry_tallies(enrichment_fractions, breeder_material_name, temperature_in_C, batches, nps, include_first_wall,seed): #thickness fixed to 100cm and inner radius to 500cm
     os.system('rm *.h5')
     os.system('rm *.xml')
@@ -158,9 +159,10 @@ def make_materials_geometry_tallies(enrichment_fractions, breeder_material_name,
     sett.run_mode = 'fixed source'
 
     source = openmc.Source()
-    source.space = openmc.stats.Point((0,0,0))
-    source.angle = openmc.stats.Isotropic()
-    source.energy = openmc.stats.Muir(e0=14080000.0, m_rat=5.0, kt=20000.0) #neutron energy = 14.08MeV, AMU for D + T = 5, temperature is 20KeV
+    #source.space = openmc.stats.Point((0,0,0))
+    #source.angle = openmc.stats.Isotropic()
+    #source.energy = openmc.stats.Muir(e0=14080000.0, m_rat=5.0, kt=20000.0) #neutron energy = 14.08MeV, AMU for D + T = 5, temperature is 20KeV
+    sett._source_library = 'parametric_plasma_source/source_sampling.so'
     sett.source = source
 
     #TALLIES#

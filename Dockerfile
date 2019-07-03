@@ -13,7 +13,14 @@ MAINTAINER Jonathan Shimwell
 #     xhost local:root
 # push to docker store with
 #     docker login
-#     docker push shimwell/openmc:latest
+#     docker push shimwell/openmc:latest# build with
+#     sudo docker build -t shimwell/freecad:latest . 
+# run with
+#     sudo docker run -it --rm -v /tmp/.X11-unix:/tmp/.X11-unix -v $PWD:/home -e DISPLAY=unix$DISPLAY --privileged shimwell/freecad
+# # if you have no GUI in docker try running this xhost command prior to running the image
+#     xhost local:root
+# 
+
 
 RUN apt-get --yes update && apt-get --yes upgrade
 
@@ -31,11 +38,13 @@ RUN apt-get --yes install cmake
 RUN apt-get --yes install libhdf5-dev 
 RUN apt-get --yes install git
 RUN apt-get update
+
 RUN apt-get install -y python3-pip
 RUN apt-get install -y python3-dev
-# RUN apt-get install -y python3-setuptools
+RUN apt-get install -y python3-setuptools
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 RUN apt-get install -y python3-tk
+RUN apt-get install -y ipython3
 
 #Install Packages Optional
 RUN apt-get --yes update
@@ -80,6 +89,8 @@ RUN pip3 install pylint
 RUN pip3 install plotly
 RUN pip3 install tqdm
 RUN pip3 install ghalton
+RUN pip3 install noisyopt
+RUN pip3 install inference-tools
 
 # Pyne requirments
 RUN pip3 install tables
@@ -171,10 +182,17 @@ RUN code "$1" --user-data-dir  --install-extension ms-azuretools.vscode-docker
 RUN code "$1" --user-data-dir  --install-extension ms-vscode.sublime-keybindings
 
 
+#installs FreeCAD
+RUN apt-get install -y software-properties-common 
+RUN add-apt-repository ppa:freecad-maintainers/freecad-stable
+RUN apt-get update 
+RUN apt-get --yes install freecad 
+RUN ln -s /usr/lib/freecad/Mod /usr/lib/freecad-python3/Mod
+
+
+
 
 RUN git clone https://github.com/Shimwell/openmc_workshop.git
-
-
 
 WORKDIR /openmc_workshop
 

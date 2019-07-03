@@ -11,20 +11,20 @@ def make_plot_correlation(filename, material):
     enrichment_first_layer = [item[0] for item in df_filtered['enrichment_value'].tolist()]
     enrichment_second_layer = [item[1] for item in df_filtered['enrichment_value'].tolist()]
     enrichment_third_layer = [item[2] for item in df_filtered['enrichment_value'].tolist()]
-    #enrichment_fourth_layer = [item[3] for item in df_filtered['enrichment_value'].tolist()]
+    enrichment_fourth_layer = [item[3] for item in df_filtered['enrichment_value'].tolist()]
 
     df_filtered.insert(4, 'enrichment_first_layer', enrichment_first_layer, True)
     df_filtered.insert(5, 'enrichment_second_layer', enrichment_second_layer, True)
     df_filtered.insert(6, 'enrichment_third_layer', enrichment_third_layer, True)
-    #df_filtered.insert(7, 'enrichment_fourth_layer', enrichment_fourth_layer, True)
+    df_filtered.insert(7, 'enrichment_fourth_layer', enrichment_fourth_layer, True)
 
     plt.rcParams['figure.figsize']=[100,40]
-    fig, ax = plt.subplots(nrows=1, ncols=3)
+    fig, ax = plt.subplots(nrows=1, ncols=4)
     ax=ax.flatten()
 
-    cols = ['enrichment_first_layer','enrichment_second_layer','enrichment_third_layer']#, 'enrichment_fourth_layer']
-    colors =['#243AB5', '#243AB5', '#243AB5']#, '#243AB5']
-    L = [enrichment_first_layer, enrichment_second_layer, enrichment_third_layer]#, enrichment_fourth_layer]
+    cols = ['enrichment_first_layer','enrichment_second_layer','enrichment_third_layer', 'enrichment_fourth_layer']
+    colors =['#243AB5', '#243AB5', '#243AB5', '#243AB5']
+    L = [enrichment_first_layer, enrichment_second_layer, enrichment_third_layer, enrichment_fourth_layer]
     tbr = list(df_filtered['value'])
     j=0
 
@@ -41,4 +41,4 @@ def make_plot_correlation(filename, material):
     return()
 
 if __name__ == '__main__':
-    make_plot_correlation('results_new_neutron_source/simulation_results_3_layers_halton_first_wall.json','Li4SiO4')
+    make_plot_correlation('results_new_neutron_source/simulation_results_4_layers_halton_first_wall.json','Li4SiO4')

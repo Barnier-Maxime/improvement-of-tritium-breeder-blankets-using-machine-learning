@@ -1,0 +1,12 @@
+[
+  {
+    "first_wall": true,
+    "number_of_materials": 4,
+    "graded": "graded",
+    "enrichment_value": [
+      0.5,
+      0.5,
+      0.5,
+      0.5
+    ],
+    "TBR_values": 

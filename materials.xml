@@ -2,8 +2,8 @@
 <materials>
   <material id="3" name="Li2TiO3">
     <density units="atom/b-cm" value="0.17037790762081068" />
-    <nuclide ao="0.51611328125" name="Li6" />
-    <nuclide ao="1.48388671875" name="Li7" />
+    <nuclide ao="0.0694580078125" name="Li6" />
+    <nuclide ao="1.9305419921875" name="Li7" />
     <nuclide ao="0.0825" name="Ti46" />
     <nuclide ao="0.0744" name="Ti47" />
     <nuclide ao="0.7372" name="Ti48" />
@@ -14,8 +14,8 @@
   </material>
   <material id="4" name="Li2TiO3">
     <density units="atom/b-cm" value="0.17037790762081068" />
-    <nuclide ao="1.8015546410608139" name="Li6" />
-    <nuclide ao="0.19844535893918613" name="Li7" />
+    <nuclide ao="0.7722400040644211" name="Li6" />
+    <nuclide ao="1.227759995935579" name="Li7" />
     <nuclide ao="0.0825" name="Ti46" />
     <nuclide ao="0.0744" name="Ti47" />
     <nuclide ao="0.7372" name="Ti48" />
@@ -26,8 +26,8 @@
   </material>
   <material id="5" name="Li2TiO3">
     <density units="atom/b-cm" value="0.17037790762081068" />
-    <nuclide ao="1.82912" name="Li6" />
-    <nuclide ao="0.17087999999999992" name="Li7" />
+    <nuclide ao="0.001024" name="Li6" />
+    <nuclide ao="1.998976" name="Li7" />
     <nuclide ao="0.0825" name="Ti46" />
     <nuclide ao="0.0744" name="Ti47" />
     <nuclide ao="0.7372" name="Ti48" />
@@ -38,8 +38,8 @@
   </material>
   <material id="6" name="Li2TiO3">
     <density units="atom/b-cm" value="0.17037790762081068" />
-    <nuclide ao="0.05164514785506039" name="Li6" />
-    <nuclide ao="1.9483548521449396" name="Li7" />
+    <nuclide ao="1.1499970250490867" name="Li6" />
+    <nuclide ao="0.8500029749509133" name="Li7" />
     <nuclide ao="0.0825" name="Ti46" />
     <nuclide ao="0.0744" name="Ti47" />
     <nuclide ao="0.7372" name="Ti48" />
@@ -48,7 +48,7 @@
     <nuclide ao="2.998863" name="O16" />
     <nuclide ao="0.001137" name="O17" />
   </material>
-  <material id="2119" name="EUROFER97">
+  <material id="10005" name="EUROFER97">
     <density units="g/cm3" value="7.75" />
     <nuclide name="Fe54" wo="5.028329345507751" />
     <nuclide name="Fe56" wo="81.8539346311616" />

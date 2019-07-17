@@ -10,10 +10,10 @@ import tensorflow as tf
 from tensorflow import keras
 from tensorflow.keras import layers
 # generate regression dataset
-
-df = pd.read_json('results_point_source/simulation_results_4_layers_halton_first_wall.json')
+filename = 'results_point_source/simulation_results_2_layers_halton_first_wall.json'
+df = pd.read_json(filename)
 df_filtered = df.loc[(df['breeder_material_name']=='Li')]
-
+answer = list(df_filtered['value'])[0]
 X = np.array(list(df_filtered['enrichment_value']))
 y = np.array(list(df_filtered['value']))
 
@@ -32,30 +32,37 @@ y = scalarY.transform(y.reshape(len(y),1))
 # new instances where we do not know the answer
 
 model = keras.Sequential([
-    layers.Dense(64, activation = tf.nn.relu, input_shape = [len(X[0])]),
-    layers.Dense(64, activation = tf.nn.relu),
-    layers.Dense(1)
+    layers.Dense(32, activation = tf.keras.activations.sigmoid, input_shape = [len(X[0])]),
+    layers.Dense(32, activation = tf.keras.activations.sigmoid),
+    layers.Dense(64, activation = tf.keras.activations.sigmoid),
+    layers.Dense(128, activation = tf.keras.activations.linear),
+    layers.Dense(64, activation = tf.keras.activations.linear),
+    layers.Dense(32, activation = tf.keras.activations.linear),
+    #layers.Dense(32, activation = tf.keras.activations.linear),
+    #layers.Dense(128, activation = tf.keras.activations.linear),
+    layers.Dense(1, activation = tf.keras.activations.linear)
 ])
 
-#optimizer = tf.keras.optimizers.SGD(0.1) #stochastic gradient descent : up to 0.95
-#optimizer = tf.keras.optimizers.RMSprop(0.01) #up to 0.93
+#optimizer = tf.keras.optimizers.SGD(0.01) #stochastic gradient descent : up to 0.95
+#optimizer = tf.keras.optimizers.RMSprop(0.0001) #up to 0.93
 #optimizer = tf.keras.optimizers.Adagrad(0.1) #up to 0.94
-#optimizer = tf.keras.optimizers.Adadelta(2) #up to 0.952
+optimizer = tf.keras.optimizers.Adadelta(1) #up to 0.952
 #optimizer = tf.keras.optimizers.Adam(0.0001) #up to 0.94
 #optimizer = tf.keras.optimizers.Adamax(0.1) #up to 0.95
-optimizer = tf.keras.optimizers.Nadam(0.001)
+#optimizer = tf.keras.optimizers.Nadam(0.001)
 
 model.compile(
-    loss = 'mean_squared_logarithmic_error',
+    loss = 'mean_squared_error',
     optimizer = optimizer,
-    metrics = ['accuracy']#['mean_absolute_error','mean_squared_error']
+    metrics =['mean_squared_error']
 )
 
-model.fit(X, y, epochs=1000, verbose=0)
+model.fit(X, y, epochs=1000, batch_size = 64, verbose=0)
 
 # Xnew, a = make_regression(n_samples=3, n_features=2, noise=0.1, random_state=1)
-Xnew = np.array([[0.75,0.1111111111111111,0.6,0.428571428571428550]])
-#answer is 1.2516885096999306
+enrichment_fractions = list(df_filtered['enrichment_value'])[0]
+Xnew = np.array([enrichment_fractions])
+print('answer is', answer)
 
 #Xnew = scalarX.transform(Xnew)
 # make a prediction

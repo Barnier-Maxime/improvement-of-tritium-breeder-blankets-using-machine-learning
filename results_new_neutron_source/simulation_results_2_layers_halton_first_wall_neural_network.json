@@ -1,0 +1,262 @@
+[
+  {
+    "first_wall": true,
+    "number_of_materials": 2,
+    "graded": "graded",
+    "enrichment_value": [
+      0.5,
+      0.3333333333333333
+    ],
+    "value": 0.993300035238471,
+    "std_dev": 0.0011125884660699685,
+    "breeder_material_name": "Li4SiO4",
+    "nps": 100000
+  },
+  {
+    "first_wall": true,
+    "number_of_materials": 2,
+    "graded": "graded",
+    "enrichment_value": [
+      0.25,
+      0.6666666666666666
+    ],
+    "value": 0.9743047648290899,
+    "std_dev": 0.0009965403240929707,
+    "breeder_material_name": "Li",
+    "nps": 100000
+  },
+  {
+    "first_wall": true,
+    "number_of_materials": 2,
+    "graded": "graded",
+    "enrichment_value": [
+      0.75,
+      0.1111111111111111
+    ],
+    "value": 0.9826892168226206,
+    "std_dev": 0.0008234426704398585,
+    "breeder_material_name": "Li2TiO3",
+    "nps": 100000
+  },
+  {
+    "first_wall": true,
+    "number_of_materials": 2,
+    "graded": "graded",
+    "enrichment_value": [
+      0.125,
+      0.4444444444444444
+    ],
+    "value": 0.9886560226466141,
+    "std_dev": 0.0008959436774049986,
+    "breeder_material_name": "Li4SiO4",
+    "nps": 100000
+  },
+  {
+    "first_wall": true,
+    "number_of_materials": 2,
+    "graded": "graded",
+    "enrichment_value": [
+      0.625,
+      0.7777777777777778
+    ],
+    "value": 0.9805160955164689,
+    "std_dev": 0.0006120865277974084,
+    "breeder_material_name": "Li",
+    "nps": 100000
+  },
+  {
+    "first_wall": true,
+    "number_of_materials": 2,
+    "graded": "graded",
+    "enrichment_value": [
+      0.375,
+      0.2222222222222222
+    ],
+    "value": 0.94811004705828,
+    "std_dev": 0.0009870212046458628,
+    "breeder_material_name": "Li",
+    "nps": 100000
+  },
+  {
+    "first_wall": true,
+    "number_of_materials": 2,
+    "graded": "graded",
+    "enrichment_value": [
+      0.875,
+      0.5555555555555556
+    ],
+    "value": 0.9758764357731606,
+    "std_dev": 0.0009544291834517627,
+    "breeder_material_name": "Li",
+    "nps": 100000
+  },
+  {
+    "first_wall": true,
+    "number_of_materials": 2,
+    "graded": "graded",
+    "enrichment_value": [
+      0.0625,
+      0.8888888888888888
+    ],
+    "value": 0.9734703954793067,
+    "std_dev": 0.0008107957144268563,
+    "breeder_material_name": "Li",
+    "nps": 100000
+  },
+  {
+    "first_wall": true,
+    "number_of_materials": 2,
+    "graded": "graded",
+    "enrichment_value": [
+      0.5625,
+      0.037037037037037035
+    ],
+    "value": 0.977710632749429,
+    "std_dev": 0.0009513371584968227,
+    "breeder_material_name": "Li2TiO3",
+    "nps": 100000
+  },
+  {
+    "first_wall": true,
+    "number_of_materials": 2,
+    "graded": "graded",
+    "enrichment_value": [
+      0.3125,
+      0.37037037037037035
+    ],
+    "value": 0.9910181645996428,
+    "std_dev": 0.0009171134576707102,
+    "breeder_material_name": "Li4SiO4",
+    "nps": 100000
+  },
+  {
+    "first_wall": true,
+    "number_of_materials": 2,
+    "graded": "graded",
+    "enrichment_value": [
+      0.8125,
+      0.7037037037037037
+    ],
+    "value": 0.9917895260913118,
+    "std_dev": 0.0008255558636188201,
+    "breeder_material_name": "Li4SiO4",
+    "nps": 100000
+  },
+  {
+    "first_wall": true,
+    "number_of_materials": 2,
+    "graded": "graded",
+    "enrichment_value": [
+      0.1875,
+      0.14814814814814814
+    ],
+    "value": 0.8994811004340069,
+    "std_dev": 0.0007545265849759625,
+    "breeder_material_name": "Li",
+    "nps": 100000
+  },
+  {
+    "first_wall": true,
+    "number_of_materials": 2,
+    "graded": "graded",
+    "enrichment_value": [
+      0.6875,
+      0.48148148148148145
+    ],
+    "value": 0.9744064080649782,
+    "std_dev": 0.0006411742587647096,
+    "breeder_material_name": "Li",
+    "nps": 100000
+  },
+  {
+    "first_wall": true,
+    "number_of_materials": 2,
+    "graded": "graded",
+    "enrichment_value": [
+      0.4375,
+      0.8148148148148148
+    ],
+    "value": 0.9930429197453354,
+    "std_dev": 0.001149818133254036,
+    "breeder_material_name": "Li4SiO4",
+    "nps": 100000
+  },
+  {
+    "first_wall": true,
+    "number_of_materials": 2,
+    "graded": "graded",
+    "enrichment_value": [
+      0.9375,
+      0.25925925925925924
+    ],
+    "value": 0.9906732794483284,
+    "std_dev": 0.0009087808913703094,
+    "breeder_material_name": "Li4SiO4",
+    "nps": 100000
+  },
+  {
+    "first_wall": true,
+    "number_of_materials": 2,
+    "graded": "graded",
+    "enrichment_value": [
+      0.03125,
+      0.5925925925925926
+    ],
+    "value": 0.9762896149923541,
+    "std_dev": 0.0009157051386499725,
+    "breeder_material_name": "Li4SiO4",
+    "nps": 100000
+  },
+  {
+    "first_wall": true,
+    "number_of_materials": 2,
+    "graded": "graded",
+    "enrichment_value": [
+      0.53125,
+      0.9259259259259259
+    ],
+    "value": 0.9776234321229001,
+    "std_dev": 0.0007332219244107495,
+    "breeder_material_name": "Li2TiO3",
+    "nps": 100000
+  },
+  {
+    "first_wall": true,
+    "number_of_materials": 2,
+    "graded": "graded",
+    "enrichment_value": [
+      0.28125,
+      0.07407407407407407
+    ],
+    "value": 0.9679022099637268,
+    "std_dev": 0.0009713209500047201,
+    "breeder_material_name": "Li2TiO3",
+    "nps": 100000
+  },
+  {
+    "first_wall": true,
+    "number_of_materials": 2,
+    "graded": "graded",
+    "enrichment_value": [
+      0.78125,
+      0.4074074074074074
+    ],
+    "value": 0.9716153799770104,
+    "std_dev": 0.0009277865891000813,
+    "breeder_material_name": "Li",
+    "nps": 100000
+  },
+  {
+    "first_wall": true,
+    "number_of_materials": 2,
+    "graded": "graded",
+    "enrichment_value": [
+      0.15625,
+      0.7407407407407407
+    ],
+    "value": 0.9898840857970859,
+    "std_dev": 0.0006601407116540084,
+    "breeder_material_name": "Li4SiO4",
+    "nps": 100000
+  }
+]

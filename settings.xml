@@ -2,7 +2,7 @@
 <settings>
   <run_mode>fixed source</run_mode>
   <particles>100000</particles>
-  <batches>4</batches>
+  <batches>8</batches>
   <inactive>0</inactive>
   <source strength="1.0" />
   <seed>1</seed>

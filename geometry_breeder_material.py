@@ -216,7 +216,7 @@ def find_tbr_dict(enrichment_fractions_simulation, breeder_material_name, includ
     result = make_materials_geometry_tallies(enrichment_fractions=enrichment_fractions_simulation,
                                             breeder_material_name = breeder_material_name, 
                                             temperature_in_C=500,
-                                            batches=8,
+                                            batches=2,
                                             nps=nps,
                                             include_first_wall=include_first_wall,
                                             seed=1

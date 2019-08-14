@@ -2,8 +2,8 @@
 <materials>
   <material id="3" name="Li4SiO4">
     <density units="atom/b-cm" value="0.0848999393353461" />
-    <nuclide ao="0.625" name="Li6" />
-    <nuclide ao="3.375" name="Li7" />
+    <nuclide ao="0.7016045673860052" name="Li6" />
+    <nuclide ao="3.2983954326139946" name="Li7" />
     <nuclide ao="0.9222968" name="Si28" />
     <nuclide ao="0.0468316" name="Si29" />
     <nuclide ao="0.0308716" name="Si30" />
@@ -12,15 +12,15 @@
   </material>
   <material id="4" name="Li4SiO4">
     <density units="atom/b-cm" value="0.0848999393353461" />
-    <nuclide ao="2.962962962962963" name="Li6" />
-    <nuclide ao="1.0370370370370372" name="Li7" />
+    <nuclide ao="0.9716009259260284" name="Li6" />
+    <nuclide ao="3.0283990740739717" name="Li7" />
     <nuclide ao="0.9222968" name="Si28" />
     <nuclide ao="0.0468316" name="Si29" />
     <nuclide ao="0.0308716" name="Si30" />
     <nuclide ao="3.998484" name="O16" />
     <nuclide ao="0.001516" name="O17" />
   </material>
-  <material id="23" name="EUROFER97">
+  <material id="17" name="EUROFER97">
     <density units="g/cm3" value="7.75" />
     <nuclide name="Fe54" wo="5.028329345507751" />
     <nuclide name="Fe56" wo="81.8539346311616" />

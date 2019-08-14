@@ -14,6 +14,9 @@ def plot_prediction_color(filename, material):
     for k in range(1,100):  #improvement of the dataset we remove the worst tbr values and we had a better enrichment configuration to replace it
         X = list(df_filtered['enrichment_value'])
         y = list(df_filtered['value'])
+
+
+        
         kernel = DotProduct() + WhiteKernel()
         gpr = GaussianProcessRegressor(kernel = kernel, random_state=0).fit(X,y)
         gpr.score(X,y)
@@ -21,15 +24,15 @@ def plot_prediction_color(filename, material):
         row_min_tbr = df_filtered.loc[df_filtered['value'].idxmin()]
 
         bounds = [(0,1),(0,1),(0,1)]
-        GP = GpOptimiser(X,y,bounds=bounds)
+        GP = GpOptimiser(X, y, bounds=bounds)
+        
+        new_enrichment_value = list(GP.search_for_maximum())
+        
         
         X.remove(row_min_tbr['enrichment_value'])
         y.remove(row_min_tbr['value'])
 
-        print(GP.search_for_maximum()[0])
-        input()
-        #print('new enrichment fraction', new_enrichment_value)
-        
+        print('new enrichment fraction', new_enrichment_value)
         append_to_json = find_tbr_dict(new_enrichment_value, material, True, 500000)
         #adjust the number of batches with the experiment
         X.append(new_enrichment_value)

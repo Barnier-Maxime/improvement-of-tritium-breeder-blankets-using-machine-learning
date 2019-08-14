@@ -11,7 +11,7 @@ def plot_prediction_color(filename, material, method):
     df = pd.read_json(filename)
     df_filtered = df.loc[df['breeder_material_name']==material]
 
-    for k in range(1,50):  #improvement of the dataset we remove the worst tbr values and we had a better enrichment configuration to replace it
+    for k in range(1,500):  #improvement of the dataset we remove the worst tbr values and we had a better enrichment configuration to replace it
         X = list(df_filtered['enrichment_value'])
         y = list(df_filtered['value'])
         kernel = DotProduct() + WhiteKernel()
@@ -135,9 +135,9 @@ def make_buttons_bis(titles):
 
 if __name__ == '__main__':
     data = []
-    data.append(plot_prediction_color('results_new_neutron_source/simulation_results_3_layers_halton_first_wall_neural_network.json', 'Li', 'halton'))
-    data.append(plot_prediction_color('results_new_neutron_source/simulation_results_3_layers_halton_first_wall_neural_network.json', 'Li2TiO3', 'halton'))
-    data.append(plot_prediction_color('results_new_neutron_source/simulation_results_3_layers_halton_first_wall_neural_network.json', 'Li4SiO4', 'halton'))
+    data.append(plot_prediction_color('results_new_neutron_source/simulation_results_3_layers_halton_first_wall_neural_network.json', 'Li', 'random'))
+    data.append(plot_prediction_color('results_new_neutron_source/simulation_results_3_layers_halton_first_wall_neural_network.json', 'Li2TiO3', 'random'))
+    data.append(plot_prediction_color('results_new_neutron_source/simulation_results_3_layers_halton_first_wall_neural_network.json', 'Li4SiO4', 'random'))
 
     updatemenus = make_buttons_bis(['TBR prediction 3 layers for Li',
                                 'TBR prediction 3 layers for Li2TiO3',

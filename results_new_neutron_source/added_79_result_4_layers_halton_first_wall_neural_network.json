@@ -1,0 +1,17 @@
+[
+  {
+    "first_wall": true,
+    "number_of_materials": 4,
+    "graded": "graded",
+    "enrichment_value": [
+      0.8329021004606526,
+      0.5732194654601864,
+      0.8130772295803752,
+      0.0
+    ],
+    "value": 0.9908450441362993,
+    "std_dev": 0.0009245700228210356,
+    "breeder_material_name": "Li4SiO4",
+    "nps": 500000
+  }
+]

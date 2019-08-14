@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='utf-8'?>
 <tallies>
-  <filter id="20" type="cell">
-    <bins>79 80</bins>
+  <filter id="14" type="cell">
+    <bins>55 56</bins>
   </filter>
-  <tally id="20" name="TBR">
-    <filters>20</filters>
+  <tally id="14" name="TBR">
+    <filters>14</filters>
     <scores>205</scores>
   </tally>
 </tallies>
